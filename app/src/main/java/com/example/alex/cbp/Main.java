@@ -1,6 +1,7 @@
 package com.example.alex.cbp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,8 +25,10 @@ public class Main extends Activity {
         startTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CameraTestModel mCameraTest = new CameraTestModel();
-                mCameraTest.runWhiteBalanceTest();
+                //CameraTestModel mCameraTest = new CameraTestModel();
+               // mCameraTest.runWhiteBalanceTest();
+                Intent intent = new Intent(Main.this, CameraWBTest.class);
+                startActivity(intent);
             }
         });
     }
