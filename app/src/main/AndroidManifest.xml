@@ -21,7 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CameraWBTest">
+        <activity android:name=".CameraWBTest"
+            android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".WBTestResult"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
