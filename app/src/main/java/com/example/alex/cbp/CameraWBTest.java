@@ -2,6 +2,7 @@ package com.example.alex.cbp;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,42 +16,48 @@ import android.view.View;
 
 import android.hardware.Camera;
 import android.hardware.Camera.Size;
+import android.hardware.Camera.PictureCallback;
+import android.hardware.Camera.AutoFocusCallback;
+import android.hardware.Camera.PreviewCallback;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class CameraWBTest extends Activity implements SurfaceHolder.Callback, View.OnClickListener, Camera.PictureCallback, Camera.PreviewCallback, Camera.AutoFocusCallback
+
+public class CameraWBTest extends Activity implements SurfaceHolder.Callback, View.OnClickListener
 {
     private Camera camera;
     private SurfaceHolder surfaceHolder;
     private SurfaceView preview;
     private Button shotBtn;
 
+    private int pictureCounter = 0;
+    public static final String saveFolderPatch = "/sdcard/CBP/";
+    public static final String testPictureName = "WB_TEST_PHOTO";
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        // если хотим, чтобы приложение постоянно имело портретную ориентацию
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        // Портретная ориентация
 
-        // если хотим, чтобы приложение было полноэкранным
+        // Полноэкранность
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // и без заголовка
+        // Без заголовка
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activiti_camera_wb_test);
 
-        // наше SurfaceView имеет имя SurfaceView01
         preview = (SurfaceView) findViewById(R.id.surfaceView);
 
         surfaceHolder = preview.getHolder();
         surfaceHolder.addCallback(this);
+        // Для старых API
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-        // кнопка имеет имя Button01
         shotBtn = (Button) findViewById(R.id.shot_button);
         shotBtn.setOnClickListener(this);
     }
@@ -87,7 +94,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         try
         {
             camera.setPreviewDisplay(holder);
-            camera.setPreviewCallback(this);
+            camera.setPreviewCallback(previewCallbacknew);
         }
         catch (IOException e)
         {
@@ -102,8 +109,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
 
         LayoutParams lp = preview.getLayoutParams();
 
-        // здесь корректируем размер отображаемого preview, чтобы не было искажений
-
+        // корректируем размер отображаемого preview, чтобы не было искажений
         if (this.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE)
         {
             // портретный вид
@@ -132,56 +138,80 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     @Override
     public void onClick(View v)
     {
-        if (v == shotBtn)
-        {
-            // либо делаем снимок непосредственно здесь
-            // 	либо включаем обработчик автофокуса
-
-            //camera.takePicture(null, null, null, this);
-            camera.autoFocus(this);
+        if (v == shotBtn) {
+            pictureCounter = 0;
+            camera.autoFocus(autoFocusCallback);
+            camera.takePicture(null, null, null, jpegCallback);
         }
     }
 
-    @Override
-    public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
-    {
-        // сохраняем полученные jpg в папке /sdcard/CameraExample/
-        // имя файла - System.currentTimeMillis()
+   PictureCallback jpegCallback = new PictureCallback() {
+       public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+       {
+           // сохраняем полученные jpg в папке /sdcard/CameraExample/
+           // имя файла - System.currentTimeMillis()
 
-        try
+           try
+           {
+               File saveDir = new File(saveFolderPatch);
+
+               if (!saveDir.exists())
+               {
+                   saveDir.mkdirs();
+               }
+
+               FileOutputStream os = new FileOutputStream(saveFolderPatch + testPictureName + pictureCounter + ".jpg");
+               os.write(paramArrayOfByte);
+               os.close();
+           }
+           catch (Exception e)
+           {
+           }
+
+           // после того, как снимок сделан, показ превью отключается. необходимо включить его
+           paramCamera.startPreview();
+           // делаем по 3 фото за раз
+           pictureCounter++;
+           if (pictureCounter < 3)
+           {
+               camera.cancelAutoFocus();
+               camera.autoFocus(autoFocusCallback);
+               camera.takePicture(null, null, null, jpegCallback);
+           }
+           if (pictureCounter == 3)
+           {
+               Intent intent = new Intent(CameraWBTest.this, WBTestResult.class);
+               startActivity(intent);
+           }
+       }
+
+    };
+
+    AutoFocusCallback autoFocusCallback = new AutoFocusCallback() {
+        public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
         {
-            File saveDir = new File("/sdcard/CameraExample/");
-
-            if (!saveDir.exists())
+            /*
+            if (paramBoolean)
             {
-                saveDir.mkdirs();
+                // если удалось сфокусироваться, делаем снимок
+                //paramCamera.takePicture(null, null, null, this);
             }
-
-            FileOutputStream os = new FileOutputStream(String.format("/sdcard/CameraExample/%d.jpg", System.currentTimeMillis()));
-            os.write(paramArrayOfByte);
-            os.close();
+            */
         }
-        catch (Exception e)
+
+    };
+
+    PreviewCallback previewCallbacknew = new PreviewCallback() {
+        public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
         {
+            // здесь можно обрабатывать изображение, показываемое в preview
         }
 
-        // после того, как снимок сделан, показ превью отключается. необходимо включить его
-        paramCamera.startPreview();
-    }
+    };
 
-    @Override
-    public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
-    {
-        if (paramBoolean)
-        {
-            // если удалось сфокусироваться, делаем снимок
-            paramCamera.takePicture(null, null, null, this);
-        }
-    }
+    public int calculateTestResult() {
 
-    @Override
-    public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
-    {
-        // здесь можно обрабатывать изображение, показываемое в preview
+        return 0;
     }
 }
+
