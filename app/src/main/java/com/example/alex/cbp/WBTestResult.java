@@ -2,8 +2,6 @@ package com.example.alex.cbp;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -11,11 +9,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by alex on 17.10.2014.
@@ -26,7 +24,12 @@ public class WBTestResult extends Activity {
     private ProgressDialog pDialog;
 
     private String photoPatchTempl;
-    private int testPoints[] ={0,0,0};
+    private final int ariaSize =100;
+
+    //Match
+    private double G =0;
+    private double H1=0,H2=0,H3=0;
+    private double Y1=0,Y2=0,Y3=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,12 @@ public class WBTestResult extends Activity {
          **/
         protected Void doInBackground(Void... args) {
 
+            //Match variable:
+            int Rfull[] = {0,0,0};
+            int Gfull[] = {0,0,0};
+            int Bfull[] = {0,0,0};
+            int Rrez, Grez, Brez;
+            double Gr, Gg, Gb;
 
             for (int pictureCounter =0;pictureCounter<3;pictureCounter++) {
 
@@ -89,38 +98,127 @@ public class WBTestResult extends Activity {
                 File file = new File(patch);
                 if (file.exists())
                 {
-                    testPoints[pictureCounter] = getPhotoPoints(patch);
+
+                    int [] photoPixels = getPhotoPoints(patch);
+                    for (int photoPixel : photoPixels)
+                    {
+                        Rfull[pictureCounter] += Color.red(photoPixel);
+                        Gfull[pictureCounter] += Color.green(photoPixel);
+                        Bfull[pictureCounter] += Color.blue(photoPixel);
+
+                    }
+
+                    Rfull[pictureCounter] =  Rfull[pictureCounter]/ariaSize;
+                    Gfull[pictureCounter] =  Gfull[pictureCounter]/ariaSize;
+                    Bfull[pictureCounter] =  Bfull[pictureCounter]/ariaSize;
                 }
-                else
-                {
-                    testPoints[pictureCounter] = 0;
-                }
+                else return null;
             }
+
+            Rrez = (Rfull[0] + Rfull[1] + Rfull[2])/3;
+            Grez = (Gfull[0] + Gfull[1] + Gfull[2])/3;
+            Brez = (Bfull[0] + Bfull[1] + Bfull[2])/3;
+            //Test N1
+            Gr = getFirstTestPoints(Rfull[0], Rfull[1], Rfull[2], Rrez);
+            Gg = getFirstTestPoints(Gfull[0], Gfull[1], Gfull[2], Grez);
+            Gb = getFirstTestPoints(Bfull[0], Bfull[1], Bfull[2], Brez);
+
+            G = (((Gr + Gg + Gb)/3)/255) * 100;
+
+            //Test N2
+            H1=  getSecondTestPoints(Rfull[0], Gfull[0], Bfull[0]);
+            H2=  getSecondTestPoints(Rfull[1], Gfull[1], Bfull[1]);
+            H3=  getSecondTestPoints(Rfull[2], Gfull[2], Bfull[2]);
+
+            //Test N3
+            Y1=  getThirdTestPoints(Rfull[0], Gfull[0], Bfull[0]);
+            Y2=  getThirdTestPoints(Rfull[1], Gfull[1], Bfull[1]);
+            Y3=  getThirdTestPoints(Rfull[2], Gfull[2], Bfull[2]);
+
             return null;
         }
-        private int getPhotoPoints(String _photoPatch) {
+        private int[] getPhotoPoints(String _photoPatch) {
             Bitmap fullBitMap = BitmapFactory.decodeFile(_photoPatch);
-            // smallBitMap = 1x1; TODO revert to 10x10
-            int cutBitMapWidth = (fullBitMap.getWidth() - 1);
-            int cutBitMapHeight = (fullBitMap.getHeight() - 1);
+            // if smallBitMap = 10x10 (100); aSize = 10
+            int aSize= (int) Math.sqrt(ariaSize);
+            int cutBitMapWidth = (fullBitMap.getWidth() - aSize);
+            int cutBitMapHeight = (fullBitMap.getHeight() - aSize);
             Bitmap smallBitMap = Bitmap.createBitmap(fullBitMap, cutBitMapWidth/2, cutBitMapHeight/2, fullBitMap.getWidth() - cutBitMapWidth, fullBitMap.getHeight() - cutBitMapHeight);
+            //clear mem
+            fullBitMap.recycle();
+
+            int[] pixels = new int[ariaSize]; // 10x10
+            //TODO revert to work with fullBitMap, without smallBitMap
+            smallBitMap.getPixels(pixels, 0, smallBitMap.getWidth(), 0, 0, smallBitMap.getWidth(), smallBitMap.getHeight());
+
             //remove photo
             File file = new File(_photoPatch);
             file.delete();
 
-            return smallBitMap.getPixel(0,0);
+            //clear mem
+            smallBitMap.recycle();
+
+            return pixels;
 
         }
 
-        protected void onPostExecute(Void arg) {
-            String testText ="";
-            for (int i = 0; i<3; i++) {
-                testText += "\n Photo N" +i;
-                testText += " Red: "+ Color.red(testPoints[i]);
-                testText += " Blue: "+ Color.blue(testPoints[i]);
-                testText += " Green: "+ Color.green(testPoints[i]);
-                testText += " Alpha: "+ Color.alpha(testPoints[i]);
+        private double getFirstTestPoints(int FirstPhotoFullColor, int SecondPhotoFullColor, int thirdPhotoFullColor, int rezColor) {
+            return Math.sqrt(  0.3333D* (Math.pow(FirstPhotoFullColor - rezColor, 2) + Math.pow(SecondPhotoFullColor - rezColor, 2) + Math.pow(thirdPhotoFullColor - rezColor, 2)) );
+        }
+        private double getSecondTestPoints(int R, int G, int B) {
+            double H =-1;
+            int MAX=0,MIN=0;
+            //Find min,max
+            MAX = Math.max(R,G);
+            MAX = Math.max(MAX,B);
+            MIN = Math.min(R,G);
+            MIN = Math.min(MIN,B);
+
+            //Algoritm
+            if (MAX == MIN)
+            {
+                H = 0;
             }
+            else if ((MAX == R)&&(G >= B))
+            {
+                H = 60*( (double) (G - B)/(MAX-MIN) );
+            }
+            else if ((MAX == R)&&(G < B))
+            {
+                H = (60*( (double) (G - B)/(MAX-MIN) ) )+ 360;
+            }
+            else if ((MAX == G))
+            {
+                H = (60*( (double) (B - R)/(MAX-MIN) ) )+ 120;
+            }
+            else if ((MAX == B))
+            {
+                H = (60*( (double) (R - G)/(MAX-MIN) ) )+ 240;
+            }
+            else if(MAX == 0)
+            {
+                H = 0;
+            }
+            return H;
+        }
+        private double getThirdTestPoints(int R, int G, int B) {
+            double Y = -1;
+            int MAX = 0, MIN = 0;
+            int HLSMAX = 240, RGBMAX = 255;
+            //Find min,max
+            MAX = Math.max(R, G);
+            MAX = Math.max(MAX, B);
+            MIN = Math.min(R, G);
+            MIN = Math.min(MIN, B);
+
+            Y = (double) (MAX + MIN + HLSMAX + RGBMAX)/(2*RGBMAX);
+            return Y;
+        }
+
+        protected void onPostExecute(Void arg) {
+            String testText ="1 Test: " + G +'\n';
+            testText +="2 Test:" + '\n' + H1 +'\n' + H2 + '\n' + H3 +'\n';
+            testText +="3 Test:" + '\n' + Y1 +'\n' + Y2 + '\n' + Y3 +'\n';
             resultText.setText(testText);
 
             pDialog.dismiss();
