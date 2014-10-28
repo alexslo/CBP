@@ -55,5 +55,5 @@
         android:layout_below="@+id/testButton"
         android:layout_marginTop="150dp"
         android:gravity="center_horizontal"
-        android:textSize="12dp"/>
+        android:textSize="12sp"/>
 </RelativeLayout>
