@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--  <selector
+          xmlns:android="http://schemas.android.com/apk/res/android">
+          <item>
+              <shape android:shape="+knopka_spuska_zatvora">
+                  <solid android:color="#0377BE"/>
+            </shape>
+        </item>
+    </selector>  -->
+</LinearLayout>
