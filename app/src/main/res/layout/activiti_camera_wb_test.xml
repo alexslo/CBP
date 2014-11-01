@@ -2,34 +2,65 @@
 
 <LinearLayout
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:weightSum="1">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
-
-        <SurfaceView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/surfaceView"
-            android:layout_gravity="center"
-            android:layout_weight="0.90"
-            android:longClickable="false" />
+            android:weightSum="100">
+            <SurfaceView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/surfaceView"
+                android:layout_gravity="center"
+                android:longClickable="false"
+                android:layout_weight="79"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:weightSum="100">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/vidoiskatel"
+                android:layout_weight="0"/>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0"
+                android:background="@drawable/backg"
+                android:tileMode="repeat"/>
+        </LinearLayout>
 
         <Button
-            android:layout_width="132dp"
-            android:layout_marginBottom="10dp"
-            android:layout_height="wrap_content"
+            android:layout_width="75dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="75dp"
             android:id="@+id/shot_button"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_weight="0.08"
-            android:background="#ff2523ff"
-            android:clickable="false"
-                        />
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/shutter"
+            android:clickable="false" />
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="end"
+            android:id="@+id/number_photo"
+            android:text="№1"
+            android:textColor="#ffffff"
+            android:textSize="32sp"/>
+
     </FrameLayout>
 
 </LinearLayout>
+

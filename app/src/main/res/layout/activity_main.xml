@@ -1,59 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@drawable/menu_background"
+
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backg"
+    android:scrollbars="vertical"
+    android:tileMode="repeat"
     tools:context=".Main">
 
-    <TextView
-        android:layout_marginTop="0dp"
-        android:layout_width="fill_parent"
-        android:layout_height="32dp"
-        android:text="MENU"
-        android:id="@+id/menu"
-        android:textColor="#ffffff"
-        android:gravity="center_horizontal"
-        android:textSize="32sp"/>
+
+
+
+        <TextView
+            android:layout_marginTop="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="36dp"
+            android:text="Меню"
+            android:id="@+id/menu"
+            android:textColor="#ffffff"
+            android:gravity="center_horizontal"
+            android:textSize="32sp"/>
+        <Button
+            android:layout_marginTop="50dp"
+            android:layout_width="189dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:id="@+id/testButton"
+            android:text="Тест"
+            android:textColor="#ffffffff"
+            android:textSize="25sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/knopka_test"/>
+        <Button
+            android:layout_marginTop="112dp"
+            android:layout_width="189dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:text="Рейтинг"
+            android:textColor="#ffffffff"
+            android:textSize="25sp"
+            android:id="@+id/reitingButton"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/knopka_reiting"/>
+        <Button
+            android:layout_marginTop="174dp"
+            android:layout_width="189dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:text="О нас"
+            android:textColor="#ffffffff"
+            android:textSize="25sp"
+            android:id="@+id/knopka_pro_nasButton"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/knopka_pro_nas"/>
     <Button
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="236dp"
         android:layout_width="189dp"
         android:layout_height="52dp"
         android:layout_gravity="center"
-        android:id="@+id/testButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/knopka_test"/>
-    <Button
-        android:layout_marginTop="112dp"
-        android:layout_width="189dp"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:id="@+id/reitingButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/knopka_reiting"/>
-    <Button
-        android:layout_marginTop="174dp"
-        android:layout_width="189dp"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:id="@+id/knopka_pro_nasButton"
+        android:text="Выход"
+        android:textColor="#ffffffff"
+        android:textSize="25sp"
+        android:id="@+id/knopka_exit"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/knopka_pro_nas"/>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="\u00A9 2013"
-        android:textColor="#ffffff"
-        android:id="@+id/textView"
-        android:layout_below="@+id/testButton"
-        android:layout_marginTop="150dp"
-        android:gravity="center_horizontal"
-        android:textSize="12sp"/>
+        android:layout_height="fill_parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="308dp"
+            android:text="  Наше приложение поможет оценить качество вашей камеры и сравнить её с камерами на других девайсах."
+            android:textColor="#ffffff"
+            android:gravity="top"
+            android:textSize="14sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
+        <TextView
+            android:text="\u00A9 2013"
+            android:textColor="#ffffff"
+            android:gravity="bottom"
+            android:textSize="12sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
+
+    </RelativeLayout>
 </RelativeLayout>

@@ -20,7 +20,7 @@ public class Main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainText = (TextView)findViewById(R.id.textView);
+     /*   mainText = (TextView)findViewById(R.id.textView);*/
         startTest  = (Button)findViewById(R.id.testButton);
         startTest.setOnClickListener(new View.OnClickListener() {
             @Override
