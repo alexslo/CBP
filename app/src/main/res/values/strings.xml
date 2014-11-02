@@ -2,7 +2,46 @@
 <resources>
 
     <string name="app_name">CBP</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <!-- Главная-->
+    <string name="rezultati">Результаты</string>
+    <string name="menu">Меню</string>
+    <string name="test">Тест</string>
+    <string name="reitingi">Рейтинг</string>
+    <string name="o_nas">О нас</string>
+    <string name="opisanie">  Наше приложение поможет оценить качество вашей камеры и сравнить её с камерами на других девайсах.</string>
+    <!-- О Нас -->
+    <string name="text_o_nas">  Для связи с нами подключете свое устройство к сети интернет и заполните форму. Как только мы увидим ваше сообщение, без замедления постараемся ответить. С уважением администрация CamLab.P.S. Мы будем рады любым вашим пожеланиям и предложениям.</string>
+    <string name="name">Имя</string>
+    <string name="your_name">Ваше имя</string>
+    <string name="e-mail">E-mail</string>
+    <string name="your_e-mail">Ваш e-mail</string>
+    <string name="massege">Сообщение</string>
+    <string name="sent">   Отправить</string>
+    <!-- Результат стат тестов -->
+    <string name="stat_testov">статических тестов</string>
+    <string name="front_camera">Передняя камера:</string>
+    <string name="back_camera">Основная камера:</string>
+    <string name="stat_rezultat">Общий результат:</string>
+    <!-- Выбор тестов -->
+    <string name="testing">Тестирование</string>
+    <string name="viberi_test">Выберете тест</string>
+    <string name="testirovat">    Тестировать</string>
+    <string name="parametri_device">Параметры тестируемого устройства:</string>
+    <string name="device">Девайс:</string>
+    <string name="android_version">Версия android:</string>
+    <string name="max_razreshenie">Максимальное разрешение:</string>
+    <string name="fokus_rasstoyanie">Фокусное расстояние:</string>
+    <string name="statikal">Статический</string>
+    <string name="dynamik">Динамический</string>
 
+    <!-- Результат динам тестов -->
+    <string name="dynam_test">динамических тестов</string>
+    <string name="dyn_test_1">Тест 1:</string>
+    <string name="dyn_test_2">Тест 2:</string>
+    <string name="dyn_test_3">Тест 3:</string>
+    <string name="dyn_test_4">Тест 4:</string>
+    <string name=""></string>
+    <!-- Общие -->
+    <string name="podpis">\u00A9 2013</string>
 </resources>

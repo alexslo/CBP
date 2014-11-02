@@ -9,26 +9,28 @@
     android:scrollbars="vertical"
     android:tileMode="repeat"
     tools:context=".Main">
-
-
-
-
         <TextView
             android:layout_marginTop="0dp"
             android:layout_width="fill_parent"
             android:layout_height="36dp"
-            android:text="Меню"
+            android:text="@string/menu"
             android:id="@+id/menu"
             android:textColor="#ffffff"
             android:gravity="center_horizontal"
             android:textSize="32sp"/>
+        <View
+            style="@style/margin_10dp"
+            android:layout_marginTop="40dp"
+            android:layout_width="fill_parent"
+            android:background="@drawable/separator"
+            android:layout_height="1dp" />
         <Button
             android:layout_marginTop="50dp"
             android:layout_width="189dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
             android:id="@+id/testButton"
-            android:text="Тест"
+            android:text="@string/test"
             android:textColor="#ffffffff"
             android:textSize="25sp"
             android:layout_alignParentTop="true"
@@ -39,7 +41,7 @@
             android:layout_width="189dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
-            android:text="Рейтинг"
+            android:text="@string/reitingi"
             android:textColor="#ffffffff"
             android:textSize="25sp"
             android:id="@+id/reitingButton"
@@ -51,25 +53,19 @@
             android:layout_width="189dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
-            android:text="О нас"
+            android:text="@string/o_nas"
             android:textColor="#ffffffff"
             android:textSize="25sp"
             android:id="@+id/knopka_pro_nasButton"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/knopka_pro_nas"/>
-    <Button
-        android:layout_marginTop="236dp"
-        android:layout_width="189dp"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:text="Выход"
-        android:textColor="#ffffffff"
-        android:textSize="25sp"
-        android:id="@+id/knopka_exit"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/knopka_pro_nas"/>
+        <View
+            style="@style/margin_10dp"
+            android:layout_marginTop="232dp"
+            android:layout_width="fill_parent"
+            android:background="@drawable/separator"
+            android:layout_height="1dp" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -78,8 +74,8 @@
         <TextView
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="308dp"
-            android:text="  Наше приложение поможет оценить качество вашей камеры и сравнить её с камерами на других девайсах."
+            android:layout_marginTop="242dp"
+            android:text="@string/opisanie"
             android:textColor="#ffffff"
             android:gravity="top"
             android:textSize="14sp"
@@ -88,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"/>
         <TextView
-            android:text="\u00A9 2013"
+            android:text="@string/podpis"
             android:textColor="#ffffff"
             android:gravity="bottom"
             android:textSize="12sp"

@@ -6,94 +6,125 @@
     android:layout_height="fill_parent"
     android:background="@drawable/backg"
     android:scrollbars="vertical"
-    android:tileMode="repeat"
->
+    android:tileMode="repeat">
 
-    <TextView
-        style="@style/text_32"
-        android:layout_marginTop="0dp"
-        android:layout_width="fill_parent"
-        android:layout_height="36dp"
-        android:text="О НАС"
-        android:id="@+id/menu"/>
-
-    <TextView style="@style/text_16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  Для связи с нами подключете свое устройство к сети интернет и заполните форму. Как только мы увидим ваше сообщение, без замедления постараемся ответить. С уважением администрация CamLab.P.S. Мы будем рады любым вашим пожеланиям и предложениям."
-        android:id="@+id/textView_about_us"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <TextView style="@style/text_16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Имя"
-        android:id="@+id/textView_name"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <EditText
-        android:background="@drawable/edittext_selector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Ваше имя"
-        android:ems="20"
-        android:id="@+id/editText_name"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"/>
-    <TextView style="@style/text_16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="E-mail"
-        android:id="@+id/textView_email"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <EditText
-        android:background="@drawable/edittext_selector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:text="Ваш e-mail"
-        android:ems="20"
-        android:id="@+id/editText_email"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"/>
-
-    <TextView style="@style/text_16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Сообщение"
-        android:id="@+id/textView_mess"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <EditText
-        android:background="@drawable/edittext_selector"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/scrollView2"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"/>
+            <TextView
+                style="@style/text_32"
+                android:layout_marginTop="0dp"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:text="@string/o_nas"
+                android:id="@+id/menu"/>
+            <View
+                style="@style/margin_10dp"
+                android:layout_width="wrap_content"
+                android:background="@drawable/separator"
+                android:layout_height="1dp" />
 
-    <TextView
-        android:text="\u00A9 2013 - CamLab"
-        android:textColor="#ffffff"
-        android:gravity="center_horizontal"
-        android:textSize="12sp"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_o_nas"
+                android:id="@+id/textView_about_us"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+            <View
+                style="@style/margin_10dp"
+                android:layout_width="wrap_content"
+                android:background="@drawable/separator"
+                android:layout_height="1dp" />
 
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:id="@+id/textView_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:background="@drawable/edittext_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="@string/your_name"
+                android:ems="20"
+                android:id="@+id/editText_name"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"/>
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/e-mail"
+                android:id="@+id/textView_email"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:background="@drawable/edittext_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:text="@string/your_e-mail"
+                android:ems="20"
+                android:id="@+id/editText_email"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/massege"
+                android:id="@+id/textView_mess"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:background="@drawable/edittext_selector"
+                android:layout_width="match_parent"
+                android:minHeight="100dp"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="2150"
+                android:id="@+id/editText2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <Button
+                android:layout_marginTop="1dp"
+                android:layout_width="189dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center"
+                android:text="@string/sent"
+                android:textColor="#ffffffff"
+                android:textSize="25sp"
+                android:id="@+id/knopka_msg"
+                android:background="@drawable/knopka_msg"/>
+
+            <TextView
+                android:text="@string/podpis"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:textSize="12sp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
