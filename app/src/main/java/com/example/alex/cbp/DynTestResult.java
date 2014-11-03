@@ -12,15 +12,13 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.io.File;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /**
  * Created by alex on 17.10.2014.
  */
-public class WBTestResult extends Activity {
+public class DynTestResult extends Activity {
 
-    private TextView resultText;
+    private TextView resultDynText_1, resultDynText_2, resultDynText_3, resultDynText_4, resultDynTextSum;
     private ProgressDialog pDialog;
 
     private String photoPatchTempl;
@@ -34,13 +32,17 @@ public class WBTestResult extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wb_result);
+        setContentView(R.layout.results_dyn);
 
-        resultText = (TextView)findViewById(R.id.resultTextView);
+        resultDynText_1 = (TextView)findViewById(R.id.dyn_rez_1);
+        resultDynText_2 = (TextView)findViewById(R.id.dyn_rez_2);
+        resultDynText_3 = (TextView)findViewById(R.id.dyn_rez_3);
+        resultDynText_4 = (TextView)findViewById(R.id.dyn_rez_4);
+        resultDynTextSum = (TextView)findViewById(R.id.dyn_rezults);
 
         photoPatchTempl = CameraWBTest.saveFolderPatch + CameraWBTest.testPictureName;
 
-        pDialog = new ProgressDialog(WBTestResult.this);
+        pDialog = new ProgressDialog(DynTestResult.this);
         CalculateTestPoints mCalculateTestPoints = new CalculateTestPoints();
 
         mCalculateTestPoints.execute();
@@ -216,10 +218,13 @@ public class WBTestResult extends Activity {
         }
 
         protected void onPostExecute(Void arg) {
-            String testText ="1 Test: " + G +'\n';
-            testText +="2 Test:" + '\n' + H1 +'\n' + H2 + '\n' + H3 +'\n';
-            testText +="3 Test:" + '\n' + Y1 +'\n' + Y2 + '\n' + Y3 +'\n';
-            resultText.setText(testText);
+            //String testText ="1 Test: " + G +'\n';
+            //testText +="2 Test:" + '\n' + H1 +'\n' + H2 + '\n' + H3 +'\n';
+            //testText +="3 Test:" + '\n' + Y1 +'\n' + Y2 + '\n' + Y3 +'\n';
+            //resultText.setText(testText);
+
+            resultDynText_1.setText( Double.toString(G));
+            resultDynTextSum.setText("999");
 
             pDialog.dismiss();
         }

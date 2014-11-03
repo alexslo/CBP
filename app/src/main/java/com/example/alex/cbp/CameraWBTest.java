@@ -2,8 +2,9 @@ package com.example.alex.cbp;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
@@ -19,6 +20,7 @@ import android.hardware.Camera.Size;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PreviewCallback;
+import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -31,6 +33,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     private SurfaceHolder surfaceHolder;
     private SurfaceView preview;
     private Button shotBtn;
+    private TextView photoNumber;
 
     private int pictureCounter = 0;
     public static final String saveFolderPatch = "/sdcard/CBP/";
@@ -41,8 +44,6 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     {
         super.onCreate(savedInstanceState);
 
-        // Портретная ориентация
-
         // Полноэкранность
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -50,6 +51,22 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activiti_camera_wb_test);
+
+        //Аллерт
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(CameraWBTest.this);
+        builder.setTitle(R.string.wb_notification_title)
+                .setMessage(R.string.wb_notification_text)
+                .setIcon(R.drawable.ic_launcher)
+                .setCancelable(true)
+                .setNegativeButton(R.string.wb_notification_button,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alert = builder.create();
+        alert.show();
 
         preview = (SurfaceView) findViewById(R.id.surfaceView);
 
@@ -60,6 +77,8 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
 
         shotBtn = (Button) findViewById(R.id.shot_button);
         shotBtn.setOnClickListener(this);
+
+        photoNumber = (TextView) findViewById(R.id.number_photo);
     }
 
     @Override
@@ -172,6 +191,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
            paramCamera.startPreview();
            // делаем по 3 фото за раз
            pictureCounter++;
+           photoNumber.setText(Integer.toString(3 - pictureCounter));
            if (pictureCounter < 3)
            {
                camera.cancelAutoFocus();
@@ -180,7 +200,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
            }
            if (pictureCounter == 3)
            {
-               Intent intent = new Intent(CameraWBTest.this, WBTestResult.class);
+               Intent intent = new Intent(CameraWBTest.this, DynTestResult.class);
                startActivity(intent);
            }
        }
@@ -209,9 +229,5 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
 
     };
 
-    public int calculateTestResult() {
-
-        return 0;
-    }
 }
 
