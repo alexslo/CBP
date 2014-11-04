@@ -25,7 +25,7 @@ public class AboutUs extends Activity
 
     AlexUtils mUtils = new AlexUtils();
 
-    String _server_url = "http://vfokuce.ru/cambanch_errors.php";
+    String _server_url = "http://vfokuce.ru/CamBanch_errors.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
