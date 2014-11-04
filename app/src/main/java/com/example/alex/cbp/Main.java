@@ -12,22 +12,26 @@ import android.widget.TextView;
 
 public class Main extends Activity {
 
-    TextView mainText;
-    Button startTest;
+    Button startTest, aboutUs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mainText = (TextView)findViewById(R.id.textView);
         startTest  = (Button)findViewById(R.id.testButton);
         startTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //CameraTestModel mCameraTest = new CameraTestModel();
-               // mCameraTest.runWhiteBalanceTest();
-                Intent intent = new Intent(Main.this, CameraWBTest.class);
+                Intent intent = new Intent(Main.this, TestChoiser.class);
+                startActivity(intent);
+            }
+        });
+
+        aboutUs  = (Button)findViewById(R.id.knopka_pro_nasButton);
+        aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main.this, AboutUs.class);
                 startActivity(intent);
             }
         });
