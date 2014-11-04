@@ -23,9 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb3d3c82-1f3d-445b-9d8b-97373d9999f5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AboutUs.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AboutUs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/TestChoiser.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/TestChoiser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CBP.iws" />
@@ -49,20 +48,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AboutUs.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AboutUs.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AboutUs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="2023">
-              <caret line="88" column="72" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.4822335" vertical-offset="1228" max-vertical-offset="2023">
+              <caret line="89" column="119" selection-start-line="89" selection-start-column="119" selection-end-line="89" selection-end-column="119" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1210#2275#0" expanded="true" />
                 <element signature="e#1864#2138#0" expanded="true" />
                 <element signature="e#2099#2100#0" expanded="true" />
                 <element signature="e#2264#2265#0" expanded="true" />
-                <element signature="e#3322#3337#0" expanded="true" />
-                <element signature="e#3787#3788#0" expanded="true" />
-                <element signature="e#3828#3829#0" expanded="true" />
+                <element signature="e#3324#3339#0" expanded="true" />
+                <element signature="e#3789#3790#0" expanded="true" />
+                <element signature="e#3830#3831#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AlexUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2091">
+              <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1962#1977#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,16 +90,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CameraModel.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CameraModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6108291" vertical-offset="30" max-vertical-offset="1496">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1496">
+              <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
               <folding>
                 <element signature="e#296#297#0" expanded="true" />
                 <element signature="e#357#358#0" expanded="true" />
                 <element signature="e#745#746#0" expanded="true" />
                 <element signature="e#809#810#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JSONParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/parser/JSONParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1751">
+              <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -807,14 +831,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/Main.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/about_us.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraWBTest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/parser/JSONParser.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AboutUs.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/test_choiser.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/TestChoiser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/parser/JSONParser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AboutUs.java" />
       </list>
     </option>
   </component>
@@ -1352,7 +1376,11 @@
       <created>1415027633028</created>
       <updated>1415027633028</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add cameraParameters">
+      <created>1415090252417</created>
+      <updated>1415090252417</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1408,11 +1436,20 @@
     <MESSAGE value="работает, фоткает, но нет анализа. Покачто:)&#10;" />
     <MESSAGE value="Фоткает 3 раза, ужимает каждую фотку до 1 пикселя и забирает из него цвета и прозрачность. Выводит это в результат" />
     <MESSAGE value="merge with serg views and some fix (about us + WBview allert-warning dialog)" />
-    <option name="LAST_COMMIT_MESSAGE" value="merge with serg views and some fix (about us + WBview allert-warning dialog)" />
+    <MESSAGE value="add cameraParameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cameraParameters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="77" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="79" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -1800,16 +1837,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/parser/JSONParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="523" max-vertical-offset="1649">
-          <caret line="42" column="73" selection-start-line="42" selection-start-column="73" selection-end-line="42" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/results_stat.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649">
@@ -1832,17 +1859,6 @@
             <element signature="e#1925#1956#0" expanded="true" />
             <element signature="e#1982#2208#0" expanded="true" />
             <element signature="e#2181#2182#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4162437" vertical-offset="1500" max-vertical-offset="2091">
-          <caret line="39" column="42" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1964#1979#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1871,19 +1887,23 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AboutUs.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/parser/JSONParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="2023">
-          <caret line="88" column="72" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1751">
+          <caret line="46" column="66" selection-start-line="46" selection-start-column="66" selection-end-line="46" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1210#2275#0" expanded="true" />
-            <element signature="e#1864#2138#0" expanded="true" />
-            <element signature="e#2099#2100#0" expanded="true" />
-            <element signature="e#2264#2265#0" expanded="true" />
-            <element signature="e#3322#3337#0" expanded="true" />
-            <element signature="e#3787#3788#0" expanded="true" />
-            <element signature="e#3828#3829#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AlexUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="2091">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1962#1977#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1898,13 +1918,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6108291" vertical-offset="30" max-vertical-offset="1496">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
+          <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
           <folding>
             <element signature="e#296#297#0" expanded="true" />
             <element signature="e#357#358#0" expanded="true" />
             <element signature="e#745#746#0" expanded="true" />
             <element signature="e#809#810#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/AboutUs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4822335" vertical-offset="1228" max-vertical-offset="2023">
+          <caret line="89" column="119" selection-start-line="89" selection-start-column="119" selection-end-line="89" selection-end-column="119" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1210#2275#0" expanded="true" />
+            <element signature="e#1864#2138#0" expanded="true" />
+            <element signature="e#2099#2100#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#3324#3339#0" expanded="true" />
+            <element signature="e#3789#3790#0" expanded="true" />
+            <element signature="e#3830#3831#0" expanded="true" />
           </folding>
         </state>
       </provider>

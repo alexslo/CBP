@@ -38,7 +38,7 @@ public class AlexUtils {
         JSONParser jsonParser = new JSONParser();
 
         JSONObject json = jsonParser.makeHttpRequest(_server_URL, "POST", _params);
-        //Log.d("Create Response", json.toString());
+        Log.d("Create Response", json.toString());
 
         try {
             int success = json.getInt("success");

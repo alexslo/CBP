@@ -87,7 +87,7 @@ public class AboutUs extends Activity
          **/
         protected String doInBackground(String... args) {
             String Model = android.os.Build.MODEL + "; " + Build.DEVICE;
-            String MessageErrors = EditTextName.getText().toString() +'\n' + EditTextMail.getText().toString() + '\n' + EditTextMessage.getText().toString();
+            String MessageErrors = EditTextName.getText().toString() +";\n" + EditTextMail.getText().toString() + ";\n" + EditTextMessage.getText().toString();
             String TimeStamp = mUtils.getTimeStamp();
 
             // Заполняем параметры
