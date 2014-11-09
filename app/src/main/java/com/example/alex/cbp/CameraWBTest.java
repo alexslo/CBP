@@ -79,6 +79,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         shotBtn.setOnClickListener(this);
 
         photoNumber = (TextView) findViewById(R.id.number_photo);
+        photoNumber.setText(Integer.toString(3));
     }
 
     @Override
@@ -86,6 +87,8 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     {
         super.onResume();
         camera = Camera.open();
+        photoNumber.setText(Integer.toString(3));
+        shotBtn.setClickable(true);
     }
 
     @Override
@@ -100,6 +103,8 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
             camera.release();
             camera = null;
         }
+        photoNumber.setText(Integer.toString(3));
+        shotBtn.setClickable(true);
     }
 
     @Override
@@ -158,6 +163,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     public void onClick(View v)
     {
         if (v == shotBtn) {
+            shotBtn.setClickable(false);
             pictureCounter = 0;
             camera.autoFocus(autoFocusCallback);
             camera.takePicture(null, null, null, jpegCallback);

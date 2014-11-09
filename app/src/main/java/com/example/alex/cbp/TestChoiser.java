@@ -31,6 +31,11 @@ public class TestChoiser extends Activity {
                     Intent intent = new Intent(TestChoiser.this, CameraWBTest.class);
                     startActivity(intent);
                 }
+                if (staticTest.isChecked())
+                {
+                    Intent intent = new Intent(TestChoiser.this, StaticTestResult.class);
+                    startActivity(intent);
+                }
 
             }
         });
@@ -43,8 +48,8 @@ public class TestChoiser extends Activity {
         deviceText.append(" " + android.os.Build.MODEL + "(" + Build.DEVICE + ")");
         androidVerText.append(" " + Build.VERSION.RELEASE);
         CameraModel mCameraModel = new CameraModel(1);
-        cameraMPText.append(" " + mCameraModel.getCameraMP() + "Mp");
-        cameraFocusText.append(" " + mCameraModel.getCameraFocusSize());
+        cameraMPText.append(" " + mCameraModel.getCameraMP() + "MP");
+        cameraFocusText.append(" " + mCameraModel.getCameraFocusSize() +"mm");
 
     }
 }

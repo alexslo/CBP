@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class Main extends Activity {
 
-    Button startTest, aboutUs;
+    Button startTest, aboutUs, raitings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,15 @@ public class Main extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main.this, AboutUs.class);
+                startActivity(intent);
+            }
+        });
+
+        raitings  = (Button)findViewById(R.id.reitingButton);
+        raitings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main.this, Reitings.class);
                 startActivity(intent);
             }
         });

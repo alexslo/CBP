@@ -127,4 +127,11 @@
         android:id="@+id/dyn_rezults"/>
     </LinearLayout>
 
+    <TextView
+        style="@style/text_32"
+        android:layout_marginTop="0dp"
+        android:layout_width="fill_parent"
+        android:layout_height="39dp"
+        android:text="@string/add_tests"/>
+
 </LinearLayout>
