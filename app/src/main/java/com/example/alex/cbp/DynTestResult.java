@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,7 +43,7 @@ public class DynTestResult extends Activity {
 
         photoPatchTempl = CameraWBTest.saveFolderPatch + CameraWBTest.testPictureName;
 
-        pDialog = new ProgressDialog(DynTestResult.this);
+        pDialog = new ProgressDialog(DynTestResult.this,ProgressDialog.THEME_HOLO_DARK);
         CalculateTestPoints mCalculateTestPoints = new CalculateTestPoints();
 
         mCalculateTestPoints.execute();
@@ -76,9 +77,9 @@ public class DynTestResult extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog.setMessage("Calculation...");
+            pDialog.setMessage(getResources().getString(R.string.loading));
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
+            pDialog.setCancelable(false);
             pDialog.show();
         }
 

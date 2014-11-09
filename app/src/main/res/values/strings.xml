@@ -44,6 +44,8 @@
 
     <string name="add_tests">Скоро больше тестов!</string>
 
+    <string name="loading">Загрузка!</string>
+
     <!-- Error сообщение во вьюхе сьемки фоток банаса белого о том что лист должен быть белым   -->
     <string name="wb_notification_title">Внимание!</string>
     <string name="wb_notification_text">Для проведения теста вам необходимо сфотографировать белую поверхность (например лист А4) при нормальном освещении</string>
