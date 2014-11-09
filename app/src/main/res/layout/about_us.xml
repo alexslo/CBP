@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/backg"
+    android:scrollbars="vertical"
+    android:tileMode="repeat">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/text_32"
+                android:layout_marginTop="0dp"
+                android:layout_width="fill_parent"
+                android:layout_height="36dp"
+                android:text="@string/o_nas"
+                android:id="@+id/menu"/>
+            <View
+                style="@style/margin_10dp"
+                android:layout_width="wrap_content"
+                android:background="@drawable/separator"
+                android:layout_height="1dp" />
+
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_o_nas"
+                android:id="@+id/textView_about_us"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+            <View
+                style="@style/margin_10dp"
+                android:layout_width="wrap_content"
+                android:background="@drawable/separator"
+                android:layout_height="1dp" />
+
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_name"
+                android:id="@+id/textView_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:background="@drawable/edittext_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="20"
+                android:id="@+id/editText_name"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:autoText="true" />
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_email"
+                android:id="@+id/textView_email"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:background="@drawable/edittext_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="20"
+                android:id="@+id/editText_email"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/massege"
+                android:id="@+id/textView_mess"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:background="@drawable/edittext_selector"
+                android:layout_width="match_parent"
+                android:minHeight="100dp"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="2150"
+                android:id="@+id/editText_feedback"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <Button
+                android:layout_marginTop="1dp"
+                android:layout_width="189dp"
+                android:layout_height="52dp"
+                android:layout_gravity="center"
+                android:text="@string/sent"
+                android:textColor="#ffffffff"
+                android:textSize="25sp"
+                android:id="@+id/knopka_msg"
+                android:background="@drawable/knopka_msg"/>
+
+            <TextView
+                android:text="@string/podpis"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:textSize="12sp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

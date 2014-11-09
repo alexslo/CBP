@@ -26,8 +26,13 @@
         <activity android:name=".CameraWBTest"
             android:screenOrientation="landscape">
         </activity>
+        <activity android:name=".StaticTestResult"
+            android:screenOrientation="portrait">
+        </activity>
         <activity android:name=".DynTestResult"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Reitings" >
         </activity>
         <activity android:name=".AboutUs" >
         </activity>

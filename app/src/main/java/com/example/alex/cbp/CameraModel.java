@@ -17,17 +17,19 @@ public class CameraModel {
 
     public double getCameraMP() {
         String allMP = FindParam("picture-size-values",cameraAllParams);
-        String maxMP[] = allMP.split(",")[0].split("x");
-        Integer allPixelsR =  Integer.parseInt(maxMP[0])*Integer.parseInt(maxMP[1])/10000;
-        double allMegaPixel = (double) allPixelsR/100;
-        return allMegaPixel;
+        String firstMP[] = allMP.split(",")[0].split("x");
+        String lastMP[] = allMP.split(",")[allMP.split(",").length - 1].split("x");
+        Integer allPixelsFirstR =  Integer.parseInt(firstMP[0])*Integer.parseInt(firstMP[1])/10000;
+        Integer allPixelsLastR =  Integer.parseInt(lastMP[0])*Integer.parseInt(lastMP[1])/10000;
+        Integer allPixelsR =  java.lang.Math.max(allPixelsFirstR, allPixelsLastR);
+        return (double) allPixelsR/100;
     }
 
     public String getCameraFocusSize() {
         return FindParam("focal-length",cameraAllParams);
     }
 
-    public String getAllCameraParams(int CurrentCamera ) {
+    private String getAllCameraParams(int CurrentCamera ) {
 
         if (CurrentCamera > Camera.getNumberOfCameras())
         {
