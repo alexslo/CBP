@@ -76,7 +76,7 @@ public class DynTestResult extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog.setMessage("Calculation...");
+            pDialog.setMessage(getResources().getString(R.string.loading));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
