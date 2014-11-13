@@ -17,11 +17,15 @@
         android:layout_width="wrap_content"
         android:background="@drawable/separator"
         android:layout_height="1dp" />
+
+
+
     <LinearLayout
         android:orientation="vertical"
         style="@style/margin_10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             style="@style/text_16"
             android:layout_marginTop="0dp"
@@ -29,21 +33,25 @@
             android:layout_height="20dp"
             android:gravity="center_horizontal"
             android:text="@string/viberi_test"/>
-
-        <CheckBox
-            android:textColor="#ffffffff"
+        <RadioGroup
+            android:id="@+id/radiotests"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statikal"
-            android:id="@+id/stat_test" />
-
-        <CheckBox
-            android:textColor="#ffffffff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dynamik"
-            android:id="@+id/dyn_test" />
+            android:layout_height="wrap_content" >
+            <RadioButton
+                android:textColor="@color/f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/statikal"
+                android:id="@+id/stat_test" />
+            <RadioButton
+                android:textColor="@color/f"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dynamik"
+                android:id="@+id/dyn_test" />
+        </RadioGroup>
     </LinearLayout>
+
     <Button
         android:layout_marginTop="10dp"
         android:layout_width="238dp"
@@ -62,7 +70,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
         <TextView
             style="@style/text_16"
             android:layout_marginTop="0dp"

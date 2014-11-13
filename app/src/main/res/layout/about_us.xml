@@ -2,8 +2,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/backg"
     android:scrollbars="vertical"
     android:tileMode="repeat">
@@ -57,13 +57,15 @@
             <EditText
                 android:background="@drawable/edittext_selector"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:inputType="textPersonName"
                 android:ems="20"
                 android:id="@+id/editText_name"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
-                android:autoText="true" />
+                android:hint="@string/name"
+                 />
             <TextView style="@style/text_16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,18 +73,19 @@
                 android:id="@+id/textView_email"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp" />
 
             <EditText
                 android:background="@drawable/edittext_selector"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
                 android:ems="20"
                 android:id="@+id/editText_email"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="15dp"
+                android:hint="@string/email"/>
 
             <TextView style="@style/text_16"
                 android:layout_width="wrap_content"
@@ -103,7 +106,8 @@
                 android:id="@+id/editText_feedback"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="15dp"
+                android:hint="@string/massege"/>
 
             <Button
                 android:layout_marginTop="1dp"
@@ -118,11 +122,19 @@
 
             <TextView
                 android:text="@string/podpis"
-                android:textColor="#ffffff"
+                android:textColor="@color/f"
                 android:gravity="center_horizontal"
                 android:textSize="12sp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"/>
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_authors"
+                android:id="@+id/authors"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

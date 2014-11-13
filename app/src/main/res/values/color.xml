@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dialog_color">#07547B</color>
+    <color name="f">#ffffffff</color>
+
 </resources>

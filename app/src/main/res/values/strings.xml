@@ -17,7 +17,8 @@
     <string name="email">E-mail</string>
     <string name="your_email">Ваш e-mail</string>
     <string name="massege">Сообщение</string>
-    <string name="sent">   Отправить</string>
+    <string name="sent">\u0020 \u0020Отправить</string>
+    <string name="text_authors">Авторами данного проекта являються: /U0085/U2602Александр Слободенюк /U0085Шевченко Сергей</string>
     <!-- Результат стат тестов -->
     <string name="stat_testov">статических тестов</string>
     <string name="front_camera">Передняя камера:</string>
