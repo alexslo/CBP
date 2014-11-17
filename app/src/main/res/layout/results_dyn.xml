@@ -39,7 +39,7 @@
             <TextView
                 style="@style/text_16"
                 android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="рез 1"
                 android:id="@+id/dyn_rez_1"/>
@@ -59,7 +59,7 @@
             <TextView
                 style="@style/text_16"
                 android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="рез 2"
                 android:id="@+id/dyn_rez_2"/>
@@ -78,7 +78,7 @@
             <TextView
                 style="@style/text_16"
                 android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="рез 3"
                 android:id="@+id/dyn_rez_3"/>
@@ -97,7 +97,7 @@
             <TextView
                 style="@style/text_16"
                 android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="Рез 4"
                 android:id="@+id/dyn_rez_4"/>

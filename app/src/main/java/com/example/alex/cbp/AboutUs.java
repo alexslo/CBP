@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
 
 import org.apache.http.NameValuePair;
@@ -98,9 +99,6 @@ public class AboutUs extends Activity
 
             mUtils.sendToServer(params, _server_url);
 
-
-
-
             return null;
         }
 
@@ -109,6 +107,8 @@ public class AboutUs extends Activity
          **/
         protected void onPostExecute(String file_url) {
             pDialog.dismiss();
+            Toast toast = Toast.makeText(getApplicationContext(),"Feedback has been sent", Toast.LENGTH_LONG);
+            toast.show();
         }
     }
 }

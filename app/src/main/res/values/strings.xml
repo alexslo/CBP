@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CBP</string>
+    <string name="app_name">CameraBenchmark</string>
     <string name="action_settings">Settings</string>
     <!-- Главная-->
-    <string name="rezultati">Результаты</string>
-    <string name="menu">Меню</string>
-    <string name="test">Тест</string>
-    <string name="reitingi">Рейтинг</string>
-    <string name="o_nas">О нас</string>
-    <string name="opisanie">  Наше приложение поможет оценить качество вашей камеры и сравнить её с камерами на других девайсах.</string>
+    <string name="rezultati">Results</string>
+    <string name="menu">Menu</string>
+    <string name="test">Test</string>
+    <string name="reitingi">Rating</string>
+    <string name="o_nas">About Us</string>
+    <string name="opisanie">This application will help you to assess the quality of your camera and compare it with the camera on other devices.</string>
     <!-- О Нас -->
-    <string name="text_o_nas">  Для связи с нами подключете свое устройство к сети интернет и заполните форму. Мы ответим вам как можно быстрее. С уважением администрация CamLab. P.S. Наша команда будет рада любым вашим пожеланиям и предложениям. Скоро больше сестов!</string>
-    <string name="name">Имя</string>
-    <string name="your_name">Ваше имя</string>
+    <string name="text_o_nas">  To contact us, connect your device to the internet and fill out the form . We will reply you as soon as possible . Sincerely administration CamLab. P.S. Our team will be glad to any of your comments and suggestions. Soon more tests! </string>
+    <string name="name">Name</string>
+    <string name="your_name">Your name</string>
     <string name="email">E-mail</string>
-    <string name="your_email">Ваш e-mail</string>
-    <string name="massege">Сообщение</string>
-    <string name="sent">   Отправить</string>
+    <string name="your_email">Your e-mail</string>
+    <string name="massege">Massege</string>
+    <string name="sent"> \u0020 \u0020 Send </string>
+    <string name="text_authors">Project authors: \u0085 \u2602 Alex Slobodeniuk \u0085 Shevchenko Sergey</string>
     <!-- Результат стат тестов -->
-    <string name="stat_testov">статических тестов</string>
-    <string name="front_camera">Передняя камера:</string>
-    <string name="back_camera">Основная камера:</string>
-    <string name="stat_rezultat">Общий результат:</string>
+    <string name="stat_testov">static tests</string>
+    <string name="front_camera">Front camera:</string>
+    <string name="back_camera">Back camera:</string>
+    <string name="stat_rezultat">The overall result:</string>
     <!-- Выбор тестов -->
-    <string name="testing">Тестирование</string>
-    <string name="viberi_test">Выберете тест</string>
-    <string name="testirovat">    Тестировать</string>
-    <string name="parametri_device">Параметры тестируемого устройства:</string>
-    <string name="device">Девайс:</string>
-    <string name="android_version">Версия android:</string>
-    <string name="max_razreshenie">Максимальное разрешение:</string>
-    <string name="fokus_rasstoyanie">Фокусное расстояние:</string>
-    <string name="statikal">Статический</string>
-    <string name="dynamik">Динамический</string>
+    <string name="testing">Testing</string>
+    <string name="viberi_test">Select the test</string>
+    <string name="testirovat">    Test</string>
+    <string name="parametri_device">Parameters of the tested device:</string>
+    <string name="device">Davice:</string>
+    <string name="android_version">Android version:</string>
+    <string name="max_razreshenie">Maximum resolution of photo:</string>
+    <string name="fokus_rasstoyanie">Focal length:</string>
+    <string name="statikal">Static</string>
+    <string name="dynamik">Dynamic</string>
 
     <!-- Результат динам тестов -->
-    <string name="dynam_test">динамических тестов</string>
-    <string name="dyn_test_1">Тест 1:</string>
-    <string name="dyn_test_2">Тест 2:</string>
-    <string name="dyn_test_3">Тест 3:</string>
-    <string name="dyn_test_4">Тест 4:</string>
+    <string name="dynam_test">Dynamic tests</string>
+    <string name="dyn_test_1">Test 1:</string>
+    <string name="dyn_test_2">Test 2:</string>
+    <string name="dyn_test_3">Test 3:</string>
+    <string name="dyn_test_4">Test 4:</string>
 
-    <string name="add_tests">Скоро больше тестов!</string>
+    <string name="add_tests">Soon more tests!</string>
 
-    <string name="loading">Загрузка!</string>
+    <string name="loading">Loading!</string>
 
     <!-- Error сообщение во вьюхе сьемки фоток банаса белого о том что лист должен быть белым   -->
-    <string name="wb_notification_title">Внимание!</string>
-    <string name="wb_notification_text">Для проведения теста вам необходимо сфотографировать белую поверхность (например лист А4) при нормальном освещении</string>
-    <string name="wb_notification_button">Я нашёл белую поверхность, начинаем тест</string>
+    <string name="wb_notification_title">Attention!</string>
+    <string name="wb_notification_text">To do this test you need to take a photo of a white surface (such as a sheet of A4) under normal lighting</string>
+    <string name="wb_notification_button">I found a white surface , begin to test</string>
     <!-- Общие -->
     <string name="podpis">\u00A9 2013</string>
 </resources>

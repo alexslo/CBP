@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -26,9 +27,11 @@ public class DynTestResult extends Activity {
     private final int ariaSize =100;
 
     //Match
-    private double G =0;
-    private double H1=0,H2=0,H3=0;
-    private double Y1=0,Y2=0,Y3=0;
+    private double G;
+    private double H;
+    private double Y;
+    private double YY;
+    private int F;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,8 @@ public class DynTestResult extends Activity {
             int Bfull[] = {0,0,0};
             int Rrez, Grez, Brez;
             double Gr, Gg, Gb;
+            double H1, H2, H3, Hfull;
+            double Y1, Y2, Y3, Yfull;
 
             for (int pictureCounter =0;pictureCounter<3;pictureCounter++) {
 
@@ -133,10 +138,28 @@ public class DynTestResult extends Activity {
             H2=  getSecondTestPoints(Rfull[1], Gfull[1], Bfull[1]);
             H3=  getSecondTestPoints(Rfull[2], Gfull[2], Bfull[2]);
 
+
+            Hfull = (H1 + H2 + H3)/3;
+
+            H =  Math.sqrt((Math.pow(H1-Hfull, 2) + Math.pow(H2-Hfull,2) + Math.pow(H3-Hfull,2))/2) ;
+            H = (H/Hfull) *100;
+
             //Test N3
             Y1=  getThirdTestPoints(Rfull[0], Gfull[0], Bfull[0]);
             Y2=  getThirdTestPoints(Rfull[1], Gfull[1], Bfull[1]);
             Y3=  getThirdTestPoints(Rfull[2], Gfull[2], Bfull[2]);
+
+            Yfull = (Y1 + Y2 + Y3)/3;
+
+            Y = Yfull;
+            Y = (Math.abs(Y -1.5)/0.5)*100;
+
+            //Test 4
+            YY = Math.sqrt((Math.pow(Y1-Yfull, 2) + Math.pow(Y2-Yfull,2) + Math.pow(Y3-Yfull,2))/2);
+
+            YY = (YY/Yfull) *100;
+
+            F = (int) (2500/G + 2500/H +2500/Y +2500/YY);
 
             return null;
         }
@@ -169,7 +192,7 @@ public class DynTestResult extends Activity {
             return Math.sqrt(  0.3333D* (Math.pow(FirstPhotoFullColor - rezColor, 2) + Math.pow(SecondPhotoFullColor - rezColor, 2) + Math.pow(thirdPhotoFullColor - rezColor, 2)) );
         }
         private double getSecondTestPoints(int R, int G, int B) {
-            double H =-1;
+            double H = 0;
             int MAX=0,MIN=0;
             //Find min,max
             MAX = Math.max(R,G);
@@ -205,8 +228,8 @@ public class DynTestResult extends Activity {
             return H;
         }
         private double getThirdTestPoints(int R, int G, int B) {
-            double Y = -1;
-            int MAX = 0, MIN = 0;
+            double Y;
+            int MAX, MIN;
             int HLSMAX = 240, RGBMAX = 255;
             //Find min,max
             MAX = Math.max(R, G);
@@ -214,7 +237,7 @@ public class DynTestResult extends Activity {
             MIN = Math.min(R, G);
             MIN = Math.min(MIN, B);
 
-            Y = (double) (MAX + MIN + HLSMAX + RGBMAX)/(2*RGBMAX);
+            Y = (double) (MAX + MIN + HLSMAX + RGBMAX)/( 2*RGBMAX);
             return Y;
         }
 
@@ -224,8 +247,11 @@ public class DynTestResult extends Activity {
             //testText +="3 Test:" + '\n' + Y1 +'\n' + Y2 + '\n' + Y3 +'\n';
             //resultText.setText(testText);
 
-            resultDynText_1.setText( Double.toString(G));
-            resultDynTextSum.setText("999");
+            resultDynText_1.setText( Double.toString(G) + " %");
+            resultDynText_2.setText( Double.toString(H) + " %");
+            resultDynText_3.setText( Double.toString(Y)+ " %");
+            resultDynText_4.setText( Double.toString(YY) + " %");
+            resultDynTextSum.setText(Double.toString(F));
 
             pDialog.dismiss();
         }
