@@ -24,7 +24,7 @@ public class DynTestResult extends Activity {
     private ProgressDialog pDialog;
 
     private String photoPatchTempl;
-    private final int ariaSize =100;
+    private final int ariaSize =10000;
 
     //Match
     private double G;
