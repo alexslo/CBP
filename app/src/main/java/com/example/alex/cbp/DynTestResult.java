@@ -24,7 +24,8 @@ public class DynTestResult extends Activity {
     private ProgressDialog pDialog;
 
     private String photoPatchTempl;
-    private final int ariaSize =10000;
+    private final int ariaSize =100;
+    int picturesNum = 50;
 
     //Match
     private double G;
@@ -92,15 +93,16 @@ public class DynTestResult extends Activity {
         protected Void doInBackground(Void... args) {
 
             //Match variable:
-            int Rfull[] = {0,0,0};
-            int Gfull[] = {0,0,0};
-            int Bfull[] = {0,0,0};
-            int Rrez, Grez, Brez;
+            int Rfull[] = new int [picturesNum];
+            int Gfull[] = new int [picturesNum];
+            int Bfull[] = new int [picturesNum];
+            int Rrez =0, Grez =0, Brez =0;
             double Gr, Gg, Gb;
-            double H1, H2, H3, Hfull;
+            double Hbuf[] = new double [picturesNum];
+            double Hfull = 0;
             double Y1, Y2, Y3, Yfull;
 
-            for (int pictureCounter =0;pictureCounter<3;pictureCounter++) {
+            for (int pictureCounter =0;pictureCounter<picturesNum;pictureCounter++) {
 
                 String patch = photoPatchTempl + pictureCounter + ".jpg";
                 File file = new File(patch);
@@ -123,25 +125,34 @@ public class DynTestResult extends Activity {
                 else return null;
             }
 
-            Rrez = (Rfull[0] + Rfull[1] + Rfull[2])/3;
-            Grez = (Gfull[0] + Gfull[1] + Gfull[2])/3;
-            Brez = (Bfull[0] + Bfull[1] + Bfull[2])/3;
+            for (int pictureCounter =0;pictureCounter<picturesNum;pictureCounter++) {
+                Rrez += Rfull[pictureCounter];
+                Grez += Gfull[pictureCounter];
+                Brez += Bfull[pictureCounter];
+            }
+            Rrez = Rrez/picturesNum;
+            Grez = Rrez/picturesNum;
+            Brez = Rrez/picturesNum;
+
             //Test N1
-            Gr = getFirstTestPoints(Rfull[0], Rfull[1], Rfull[2], Rrez);
-            Gg = getFirstTestPoints(Gfull[0], Gfull[1], Gfull[2], Grez);
-            Gb = getFirstTestPoints(Bfull[0], Bfull[1], Bfull[2], Brez);
+            Gr = getFirstTestPoints(Rfull, Rrez);
+            Gg = getFirstTestPoints(Gfull, Grez);
+            Gb = getFirstTestPoints(Bfull, Brez);
 
             G = (((Gr + Gg + Gb)/3)/255) * 100;
 
             //Test N2
-            H1=  getSecondTestPoints(Rfull[0], Gfull[0], Bfull[0]);
-            H2=  getSecondTestPoints(Rfull[1], Gfull[1], Bfull[1]);
-            H3=  getSecondTestPoints(Rfull[2], Gfull[2], Bfull[2]);
+            for (int pictureCounter =0;pictureCounter<picturesNum;pictureCounter++) {
+                Hbuf[pictureCounter]= getSecondTestPoints(Rfull[pictureCounter], Gfull[pictureCounter], Bfull[pictureCounter]);
+                Hfull += Hbuf[pictureCounter];
+            }
+            Hfull = Hfull/picturesNum;
 
+            for (int pictureCounter =0;pictureCounter<picturesNum;pictureCounter++) {
+                H += Math.pow(Hbuf[pictureCounter]-Hfull, 2);
+            }
 
-            Hfull = (H1 + H2 + H3)/3;
-
-            H =  Math.sqrt((Math.pow(H1-Hfull, 2) + Math.pow(H2-Hfull,2) + Math.pow(H3-Hfull,2))/2) ;
+            H =  Math.sqrt(H/2);
             H = (H/Hfull) *100;
 
             //Test N3
@@ -188,8 +199,14 @@ public class DynTestResult extends Activity {
 
         }
 
-        private double getFirstTestPoints(int FirstPhotoFullColor, int SecondPhotoFullColor, int thirdPhotoFullColor, int rezColor) {
-            return Math.sqrt(  0.3333D* (Math.pow(FirstPhotoFullColor - rezColor, 2) + Math.pow(SecondPhotoFullColor - rezColor, 2) + Math.pow(thirdPhotoFullColor - rezColor, 2)) );
+        private double getFirstTestPoints(int PhotoFullColor[], int rezColor) {
+            double BufPoints = 0;
+            for (int i = 0; i <picturesNum; i++)
+            {
+                BufPoints += Math.pow(PhotoFullColor[i] - rezColor, 2);
+            }
+            BufPoints = Math.sqrt( BufPoints/picturesNum );
+            return BufPoints;
         }
         private double getSecondTestPoints(int R, int G, int B) {
             double H = 0;

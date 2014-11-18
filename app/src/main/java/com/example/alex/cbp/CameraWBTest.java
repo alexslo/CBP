@@ -79,7 +79,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         shotBtn.setOnClickListener(this);
 
         photoNumber = (TextView) findViewById(R.id.number_photo);
-        photoNumber.setText(Integer.toString(3));
+        photoNumber.setText(Integer.toString(50));
     }
 
     @Override
@@ -87,7 +87,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     {
         super.onResume();
         camera = Camera.open();
-        photoNumber.setText(Integer.toString(3));
+        photoNumber.setText(Integer.toString(50));
         shotBtn.setClickable(true);
     }
 
@@ -103,7 +103,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
             camera.release();
             camera = null;
         }
-        photoNumber.setText(Integer.toString(3));
+        photoNumber.setText(Integer.toString(50));
         shotBtn.setClickable(true);
     }
 
@@ -197,14 +197,14 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
            paramCamera.startPreview();
            // делаем по 3 фото за раз
            pictureCounter++;
-           photoNumber.setText(Integer.toString(3 - pictureCounter));
-           if (pictureCounter < 3)
+           photoNumber.setText(Integer.toString(50 - pictureCounter));
+           if (pictureCounter < 50)
            {
                camera.cancelAutoFocus();
                camera.autoFocus(autoFocusCallback);
                camera.takePicture(null, null, null, jpegCallback);
            }
-           if (pictureCounter == 3)
+           if (pictureCounter == 50)
            {
                Intent intent = new Intent(CameraWBTest.this, DynTestResult.class);
                startActivity(intent);
