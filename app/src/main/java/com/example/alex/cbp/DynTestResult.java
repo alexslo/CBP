@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by alex on 17.10.2014.
@@ -25,7 +28,7 @@ public class DynTestResult extends Activity {
 
     private String photoPatchTempl;
     private final int ariaSize =100;
-    int picturesNum = 50;
+    int picturesNum = 3;
 
     //Match
     private double G;
@@ -33,6 +36,9 @@ public class DynTestResult extends Activity {
     private double Y;
     private double YY;
     private int F;
+
+    private TextView testTextView;
+    String testStr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,7 @@ public class DynTestResult extends Activity {
         resultDynText_3 = (TextView)findViewById(R.id.dyn_rez_3);
         resultDynText_4 = (TextView)findViewById(R.id.dyn_rez_4);
         resultDynTextSum = (TextView)findViewById(R.id.dyn_rezults);
+        testTextView = (TextView)findViewById(R.id.testTextView);
 
         photoPatchTempl = CameraWBTest.saveFolderPatch + CameraWBTest.testPictureName;
 
@@ -118,6 +125,12 @@ public class DynTestResult extends Activity {
 
                     }
 
+                    testStr += '\n' + "Pictures №" + pictureCounter +
+                            " R1:" + Color.red(photoPixels[0]) + " G1:" + Color.green(photoPixels[0]) + " B1:" + Color.blue(photoPixels[0]) +
+                            " R2:" + Color.red(photoPixels[9]) + " G2:" + Color.green(photoPixels[9]) + " B2:" + Color.blue(photoPixels[9]) +
+                            " R3:" + Color.red(photoPixels[89]) + " G3:" + Color.green(photoPixels[89]) + " B3:" + Color.blue(photoPixels[89]) +
+                            " R4:" + Color.red(photoPixels[99]) + " G4:" + Color.green(photoPixels[99]) + " B4:" + Color.blue(photoPixels[99]);
+
                     Rfull[pictureCounter] =  Rfull[pictureCounter]/ariaSize;
                     Gfull[pictureCounter] =  Gfull[pictureCounter]/ariaSize;
                     Bfull[pictureCounter] =  Bfull[pictureCounter]/ariaSize;
@@ -182,7 +195,7 @@ public class DynTestResult extends Activity {
             int cutBitMapHeight = (fullBitMap.getHeight() - aSize);
             Bitmap smallBitMap = Bitmap.createBitmap(fullBitMap, cutBitMapWidth/2, cutBitMapHeight/2, fullBitMap.getWidth() - cutBitMapWidth, fullBitMap.getHeight() - cutBitMapHeight);
             //clear mem
-            fullBitMap.recycle();
+            //fullBitMap.recycle();
 
             int[] pixels = new int[ariaSize]; // 10x10
             //TODO revert to work with fullBitMap, without smallBitMap
@@ -191,6 +204,37 @@ public class DynTestResult extends Activity {
             //remove photo
             File file = new File(_photoPatch);
             file.delete();
+
+            //test:
+            FileOutputStream fos = null;
+            try {
+                fos = new FileOutputStream(_photoPatch);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            fullBitMap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
+            String patchs[] = _photoPatch.split(".jpg");
+            String patch = patchs[0] + "_small.jpg";
+            fos = null;
+            try {
+                fos = new FileOutputStream(patch);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            smallBitMap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             //clear mem
             smallBitMap.recycle();
@@ -269,6 +313,8 @@ public class DynTestResult extends Activity {
             resultDynText_3.setText( Double.toString(Y)+ " %");
             resultDynText_4.setText( Double.toString(YY) + " %");
             resultDynTextSum.setText(Double.toString(F));
+
+            testTextView.setText(testStr);
 
             pDialog.dismiss();
         }

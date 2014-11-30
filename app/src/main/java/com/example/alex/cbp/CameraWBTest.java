@@ -36,6 +36,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     private TextView photoNumber;
 
     private int pictureCounter = 0;
+    private int picturesNum = 3;
     public static final String saveFolderPatch = "/sdcard/CBP/";
     public static final String testPictureName = "WB_TEST_PHOTO";
 
@@ -79,7 +80,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         shotBtn.setOnClickListener(this);
 
         photoNumber = (TextView) findViewById(R.id.number_photo);
-        photoNumber.setText(Integer.toString(50));
+        photoNumber.setText(Integer.toString(picturesNum));
     }
 
     @Override
@@ -87,7 +88,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     {
         super.onResume();
         camera = Camera.open();
-        photoNumber.setText(Integer.toString(50));
+        photoNumber.setText(Integer.toString(picturesNum));
         shotBtn.setClickable(true);
     }
 
@@ -103,7 +104,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
             camera.release();
             camera = null;
         }
-        photoNumber.setText(Integer.toString(50));
+        photoNumber.setText(Integer.toString(picturesNum));
         shotBtn.setClickable(true);
     }
 
@@ -197,14 +198,14 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
            paramCamera.startPreview();
            // делаем по 3 фото за раз
            pictureCounter++;
-           photoNumber.setText(Integer.toString(50 - pictureCounter));
-           if (pictureCounter < 50)
+           photoNumber.setText(Integer.toString(picturesNum - pictureCounter));
+           if (pictureCounter < picturesNum)
            {
                camera.cancelAutoFocus();
                camera.autoFocus(autoFocusCallback);
                camera.takePicture(null, null, null, jpegCallback);
            }
-           if (pictureCounter == 50)
+           if (pictureCounter == picturesNum)
            {
                Intent intent = new Intent(CameraWBTest.this, DynTestResult.class);
                startActivity(intent);

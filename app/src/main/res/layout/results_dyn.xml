@@ -5,7 +5,8 @@
     android:layout_height="fill_parent"
     android:background="@drawable/backg"
     android:scrollbars="vertical"
-    android:tileMode="repeat">
+    android:tileMode="repeat"
+    android:weightSum="1">
 
     <TextView
         style="@style/text_32"
@@ -133,5 +134,15 @@
         android:layout_width="fill_parent"
         android:layout_height="39dp"
         android:text="@string/add_tests"/>
+
+    <TextView
+        style="@style/text_16"
+        android:layout_width="324dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/testTextView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.79" />
 
 </LinearLayout>
