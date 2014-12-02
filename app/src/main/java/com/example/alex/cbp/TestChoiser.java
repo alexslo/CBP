@@ -2,6 +2,7 @@ package com.example.alex.cbp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,11 +16,20 @@ public class TestChoiser extends Activity {
     Button startTest;
     RadioGroup testsRadioGroup;
     TextView deviceText, androidVerText, cameraMPText, cameraFocusText;
+    double mPixels, mFocus;
+    SharedPreferences prefData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_choiser);
+        CameraModel mCameraModel = new CameraModel(1);
+        mPixels = mCameraModel.getCameraMP();
+        mFocus = mCameraModel.getCameraFocusSize();
+
+        prefData = getApplicationContext().getSharedPreferences("CBP_DATA", MODE_PRIVATE);
+        final SharedPreferences.Editor prefDataEditor = prefData.edit();
+
         startTest = (Button) findViewById(R.id.startTestButton);
         testsRadioGroup = (RadioGroup) findViewById(R.id.radiotests);
         startTest.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +38,9 @@ public class TestChoiser extends Activity {
                 if (testsRadioGroup.getCheckedRadioButtonId()==R.id.dyn_test)
                 {
                     Intent intent = new Intent(TestChoiser.this, CameraWBTest.class);
+                    prefDataEditor.putString("MPixels", String.valueOf(mPixels));
+                    prefDataEditor.putString("MFocus", String.valueOf(mFocus));
+                    prefDataEditor.commit();
                     startActivity(intent);
                 }
                 if (testsRadioGroup.getCheckedRadioButtonId()==R.id.stat_test)
@@ -46,9 +59,8 @@ public class TestChoiser extends Activity {
 
         deviceText.append(" " + android.os.Build.MODEL + "(" + Build.DEVICE + ")");
         androidVerText.append(" " + Build.VERSION.RELEASE);
-        CameraModel mCameraModel = new CameraModel(1);
-        cameraMPText.append(" " + mCameraModel.getCameraMP() + "MP");
-        cameraFocusText.append(" " + mCameraModel.getCameraFocusSize() +"mm");
+        cameraMPText.append(" " + mPixels + "MP");
+        cameraFocusText.append(" " + mFocus +"mm");
 
     }
 }

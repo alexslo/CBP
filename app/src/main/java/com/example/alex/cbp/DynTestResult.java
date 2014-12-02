@@ -2,21 +2,23 @@ package com.example.alex.cbp;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.media.ExifInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+
 
 /**
  * Created by alex on 17.10.2014.
@@ -25,6 +27,7 @@ public class DynTestResult extends Activity {
 
     private TextView resultDynText_1, resultDynText_2, resultDynText_3, resultDynText_4, resultDynTextSum;
     private ProgressDialog pDialog;
+    private SharedPreferences prefData;
 
     private String photoPatchTempl;
     private final int ariaSize =100;
@@ -32,10 +35,7 @@ public class DynTestResult extends Activity {
 
     //Match
     private double G;
-    private double H;
-    private double Y;
-    private double YY;
-    private int F;
+    private double finalPoints;
 
     private TextView testTextView;
     String testStr = "";
@@ -55,6 +55,7 @@ public class DynTestResult extends Activity {
         photoPatchTempl = CameraWBTest.saveFolderPatch + CameraWBTest.testPictureName;
 
         pDialog = new ProgressDialog(DynTestResult.this,ProgressDialog.THEME_HOLO_DARK);
+        prefData = getApplicationContext().getSharedPreferences("CBP_DATA", MODE_PRIVATE);
         CalculateTestPoints mCalculateTestPoints = new CalculateTestPoints();
 
         mCalculateTestPoints.execute();
@@ -105,9 +106,6 @@ public class DynTestResult extends Activity {
             int Bfull[] = new int [picturesNum];
             int Rrez =0, Grez =0, Brez =0;
             double Gr, Gg, Gb;
-            double Hbuf[] = new double [picturesNum];
-            double Hfull = 0;
-            double Y1, Y2, Y3, Yfull;
 
             for (int pictureCounter =0;pictureCounter<picturesNum;pictureCounter++) {
 
@@ -124,12 +122,6 @@ public class DynTestResult extends Activity {
                         Bfull[pictureCounter] += Color.blue(photoPixel);
 
                     }
-
-                    testStr += '\n' + "Pictures №" + pictureCounter +
-                            " R1:" + Color.red(photoPixels[0]) + " G1:" + Color.green(photoPixels[0]) + " B1:" + Color.blue(photoPixels[0]) +
-                            " R2:" + Color.red(photoPixels[9]) + " G2:" + Color.green(photoPixels[9]) + " B2:" + Color.blue(photoPixels[9]) +
-                            " R3:" + Color.red(photoPixels[89]) + " G3:" + Color.green(photoPixels[89]) + " B3:" + Color.blue(photoPixels[89]) +
-                            " R4:" + Color.red(photoPixels[99]) + " G4:" + Color.green(photoPixels[99]) + " B4:" + Color.blue(photoPixels[99]);
 
                     Rfull[pictureCounter] =  Rfull[pictureCounter]/ariaSize;
                     Gfull[pictureCounter] =  Gfull[pictureCounter]/ariaSize;
@@ -154,36 +146,12 @@ public class DynTestResult extends Activity {
 
             G = (((Gr + Gg + Gb)/3)/255) * 100;
 
-            //Test N2
-            for (int pictureCounter =0;pictureCounter<picturesNum;pictureCounter++) {
-                Hbuf[pictureCounter]= getSecondTestPoints(Rfull[pictureCounter], Gfull[pictureCounter], Bfull[pictureCounter]);
-                Hfull += Hbuf[pictureCounter];
-            }
-            Hfull = Hfull/picturesNum;
+            testStr += "MPixels: " +  prefData.getString("MPixels","0.1") +"\n" +
+                       "MFocus: " +  prefData.getString("MFocus", "") +"\n" +
+                       "MTime: " +  Math.abs(prefData.getLong("timeTestP", 1)) +"\n"
+                        + getExifPhotoPoints(photoPatchTempl + "0.jpg");
 
-            for (int pictureCounter =0;pictureCounter<picturesNum;pictureCounter++) {
-                H += Math.pow(Hbuf[pictureCounter]-Hfull, 2);
-            }
 
-            H =  Math.sqrt(H/2);
-            H = (H/Hfull) *100;
-
-            //Test N3
-            Y1=  getThirdTestPoints(Rfull[0], Gfull[0], Bfull[0]);
-            Y2=  getThirdTestPoints(Rfull[1], Gfull[1], Bfull[1]);
-            Y3=  getThirdTestPoints(Rfull[2], Gfull[2], Bfull[2]);
-
-            Yfull = (Y1 + Y2 + Y3)/3;
-
-            Y = Yfull;
-            Y = (Math.abs(Y -1.5)/0.5)*100;
-
-            //Test 4
-            YY = Math.sqrt((Math.pow(Y1-Yfull, 2) + Math.pow(Y2-Yfull,2) + Math.pow(Y3-Yfull,2))/2);
-
-            YY = (YY/Yfull) *100;
-
-            F = (int) (2500/G + 2500/H +2500/Y +2500/YY);
 
             return null;
         }
@@ -195,46 +163,16 @@ public class DynTestResult extends Activity {
             int cutBitMapHeight = (fullBitMap.getHeight() - aSize);
             Bitmap smallBitMap = Bitmap.createBitmap(fullBitMap, cutBitMapWidth/2, cutBitMapHeight/2, fullBitMap.getWidth() - cutBitMapWidth, fullBitMap.getHeight() - cutBitMapHeight);
             //clear mem
-            //fullBitMap.recycle();
+            fullBitMap.recycle();
 
             int[] pixels = new int[ariaSize]; // 10x10
             //TODO revert to work with fullBitMap, without smallBitMap
             smallBitMap.getPixels(pixels, 0, smallBitMap.getWidth(), 0, 0, smallBitMap.getWidth(), smallBitMap.getHeight());
 
             //remove photo
-            File file = new File(_photoPatch);
-            file.delete();
+            //File file = new File(_photoPatch);
+            //file.delete();
 
-            //test:
-            FileOutputStream fos = null;
-            try {
-                fos = new FileOutputStream(_photoPatch);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            fullBitMap.compress(Bitmap.CompressFormat.JPEG,100,fos);
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-
-            String patchs[] = _photoPatch.split(".jpg");
-            String patch = patchs[0] + "_small.jpg";
-            fos = null;
-            try {
-                fos = new FileOutputStream(patch);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            smallBitMap.compress(Bitmap.CompressFormat.JPEG,100,fos);
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
             //clear mem
             smallBitMap.recycle();
@@ -252,55 +190,23 @@ public class DynTestResult extends Activity {
             BufPoints = Math.sqrt( BufPoints/picturesNum );
             return BufPoints;
         }
-        private double getSecondTestPoints(int R, int G, int B) {
-            double H = 0;
-            int MAX=0,MIN=0;
-            //Find min,max
-            MAX = Math.max(R,G);
-            MAX = Math.max(MAX,B);
-            MIN = Math.min(R,G);
-            MIN = Math.min(MIN,B);
-
-            //Algoritm
-            if (MAX == MIN)
-            {
-                H = 0;
+        private String getExifPhotoPoints(String patch) {
+            String parBuf ="";
+            ExifInterface exif = null;
+            try {
+                exif = new ExifInterface(patch);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            else if ((MAX == R)&&(G >= B))
-            {
-                H = 60*( (double) (G - B)/(MAX-MIN) );
+            if (exif != null) {
+                parBuf = "TAG_MAKE: " + exif.getAttribute(ExifInterface.TAG_MAKE) + '\n' +
+                         "TAG_EXPOSURE_TIME: " + exif.getAttribute(ExifInterface.TAG_EXPOSURE_TIME) + '\n' +
+                         "TAG_APERTURE: " + exif.getAttribute(ExifInterface.TAG_APERTURE) + '\n' +
+                         "TAG_ISO: " + exif.getAttribute(ExifInterface.TAG_ISO) + '\n';
             }
-            else if ((MAX == R)&&(G < B))
-            {
-                H = (60*( (double) (G - B)/(MAX-MIN) ) )+ 360;
-            }
-            else if ((MAX == G))
-            {
-                H = (60*( (double) (B - R)/(MAX-MIN) ) )+ 120;
-            }
-            else if ((MAX == B))
-            {
-                H = (60*( (double) (R - G)/(MAX-MIN) ) )+ 240;
-            }
-            else if(MAX == 0)
-            {
-                H = 0;
-            }
-            return H;
+            return parBuf;
         }
-        private double getThirdTestPoints(int R, int G, int B) {
-            double Y;
-            int MAX, MIN;
-            int HLSMAX = 240, RGBMAX = 255;
-            //Find min,max
-            MAX = Math.max(R, G);
-            MAX = Math.max(MAX, B);
-            MIN = Math.min(R, G);
-            MIN = Math.min(MIN, B);
 
-            Y = (double) (MAX + MIN + HLSMAX + RGBMAX)/( 2*RGBMAX);
-            return Y;
-        }
 
         protected void onPostExecute(Void arg) {
             //String testText ="1 Test: " + G +'\n';
@@ -309,10 +215,10 @@ public class DynTestResult extends Activity {
             //resultText.setText(testText);
 
             resultDynText_1.setText( Double.toString(G) + " %");
-            resultDynText_2.setText( Double.toString(H) + " %");
-            resultDynText_3.setText( Double.toString(Y)+ " %");
-            resultDynText_4.setText( Double.toString(YY) + " %");
-            resultDynTextSum.setText(Double.toString(F));
+            //resultDynText_2.setText( Double.toString(H) + " %");
+            //resultDynText_3.setText( Double.toString(Y)+ " %");
+            //resultDynText_4.setText( Double.toString(YY) + " %");
+            //resultDynTextSum.setText(Double.toString(F));
 
             testTextView.setText(testStr);
 

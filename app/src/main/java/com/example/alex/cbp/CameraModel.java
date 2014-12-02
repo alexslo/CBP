@@ -25,8 +25,8 @@ public class CameraModel {
         return (double) allPixelsR/100;
     }
 
-    public String getCameraFocusSize() {
-        return FindParam("focal-length",cameraAllParams);
+    public double getCameraFocusSize() {
+        return Double.parseDouble(FindParam("focal-length",cameraAllParams));
     }
 
     private String getAllCameraParams(int CurrentCamera ) {

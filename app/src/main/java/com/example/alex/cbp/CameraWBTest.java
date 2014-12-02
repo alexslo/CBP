@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
@@ -40,6 +41,11 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     public static final String saveFolderPatch = "/sdcard/CBP/";
     public static final String testPictureName = "WB_TEST_PHOTO";
 
+    private long timeTestP;
+
+    private SharedPreferences prefData;
+    SharedPreferences.Editor prefDataEditor;
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -52,6 +58,9 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activiti_camera_wb_test);
+
+        prefData = getApplicationContext().getSharedPreferences("CBP_DATA", MODE_PRIVATE);
+        prefDataEditor = prefData.edit();
 
         //Аллерт
 
@@ -167,6 +176,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
             shotBtn.setClickable(false);
             pictureCounter = 0;
             camera.autoFocus(autoFocusCallback);
+            timeTestP = System.currentTimeMillis();
             camera.takePicture(null, null, null, jpegCallback);
         }
     }
@@ -174,8 +184,9 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
    PictureCallback jpegCallback = new PictureCallback() {
        public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
        {
-           // сохраняем полученные jpg в папке /sdcard/CameraExample/
-           // имя файла - System.currentTimeMillis()
+           // сохраняем полученные jpg в папке /sdcard/CBP/
+
+           if (pictureCounter == 0) timeTestP -= System.currentTimeMillis();
 
            try
            {
@@ -208,6 +219,8 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
            if (pictureCounter == picturesNum)
            {
                Intent intent = new Intent(CameraWBTest.this, DynTestResult.class);
+               prefDataEditor.putLong("timeTestP",timeTestP);
+               prefDataEditor.commit();
                startActivity(intent);
            }
        }
