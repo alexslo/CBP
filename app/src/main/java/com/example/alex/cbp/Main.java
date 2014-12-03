@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import com.google.android.gms.ads.*;
 
 
 public class Main extends Activity {
@@ -44,6 +44,11 @@ public class Main extends Activity {
                 startActivity(intent);
             }
         });
+
+        // Поиск AdView как ресурса и отправка запроса.
+        AdView adView = (AdView)this.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 
