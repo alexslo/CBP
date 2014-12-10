@@ -26,6 +26,7 @@ public class TestChoiser extends Activity {
         CameraModel mCameraModel = new CameraModel(1);
         mPixels = mCameraModel.getCameraMP();
         mFocus = mCameraModel.getCameraFocusSize();
+        final String maxISO = mCameraModel.getCameraIsoMax();
 
         prefData = getApplicationContext().getSharedPreferences("CBP_DATA", MODE_PRIVATE);
         final SharedPreferences.Editor prefDataEditor = prefData.edit();
@@ -40,6 +41,7 @@ public class TestChoiser extends Activity {
                     Intent intent = new Intent(TestChoiser.this, CameraWBTest.class);
                     prefDataEditor.putString("MPixels", String.valueOf(mPixels));
                     prefDataEditor.putString("MFocus", String.valueOf(mFocus));
+                    prefDataEditor.putString("MaxISO", maxISO);
                     prefDataEditor.commit();
                     startActivity(intent);
                 }

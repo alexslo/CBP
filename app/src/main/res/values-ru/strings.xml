@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CBP</string>
+    <string name="action_settings">Settings</string>
+    <!-- Главная-->
+    <string name="rezultati">Результаты</string>
+    <string name="menu">Меню</string>
+    <string name="test">Тест</string>
+    <string name="reitingi">Рейтинг</string>
+    <string name="o_nas">О нас</string>
+    <string name="opisanie">  Наше приложение поможет оценить качество вашей камеры и сравнить её с камерами на других девайсах.</string>
+    <!-- О Нас -->
+    <string name="text_o_nas">  Для связи с нами подключете свое устройство к сети интернет и заполните форму. Мы ответим вам как можно быстрее. С уважением администрация CamLab. P.S. Наша команда будет рада любым вашим пожеланиям и предложениям. Скоро больше сестов!</string>
+    <string name="name">Имя</string>
+    <string name="your_name">Ваше имя</string>
+    <string name="email">E-mail</string>
+    <string name="your_email">Ваш e-mail</string>
+    <string name="massege">Сообщение</string>
+    <string name="sent">\u0020 \u0020 Отправить </string>
+    <string name="text_authors">Авторами данного проекта являються: \u0085 \u2602 Александр Слободенюк \u0085 Шевченко Сергей</string>
+    <!-- Результат стат тестов -->
+    <string name="stat_testov">статических тестов</string>
+    <string name="front_camera">Передняя камера:</string>
+    <string name="back_camera">Основная камера:</string>
+    <string name="stat_rezultat">Общий результат:</string>
+    <!-- Выбор тестов -->
+    <string name="testing">Тестирование</string>
+    <string name="viberi_test">Выберете тест</string>
+    <string name="testirovat">    Тестировать</string>
+    <string name="parametri_device">Параметры тестируемого устройства:</string>
+    <string name="device">Девайс:</string>
+    <string name="android_version">Версия android:</string>
+    <string name="max_razreshenie">Максимальное разрешение:</string>
+    <string name="fokus_rasstoyanie">Фокусное расстояние:</string>
+    <string name="statikal">Статический</string>
+    <string name="dynamik">Динамический</string>
+
+    <!-- Результат динам тестов -->
+    <string name="dynam_test">динамических тестов</string>
+    <string name="dyn_test_1">Тест 1:</string>
+    <string name="dyn_test_2">Тест 2:</string>
+    <string name="dyn_test_3">Тест 3:</string>
+    <string name="dyn_test_4">Тест 4:</string>
+
+    <string name="add_tests">Скоро больше тестов!</string>
+
+    <string name="loading">Загрузка!</string>
+
+    <!-- Error сообщение во вьюхе сьемки фоток банаса белого о том что лист должен быть белым   -->
+    <string name="wb_notification_title">Внимание!</string>
+    <string name="wb_notification_text">Для проведения теста вам необходимо сфотографировать белую поверхность (например лист А4) при нормальном освещении</string>
+    <string name="wb_notification_button">Я нашёл белую поверхность, начинаем тест</string>
+    <string name="wb_notification_black_text">Для проведения теста вам необходимо закрыть объектив (например пальцем) и сфотографировать черный</string>
+    <string name="wb_notification_black_button">Я закрыл объектив, начинаем тест</string>
+    <!-- Общие -->
+    <string name="podpis">\u00A9 2013</string>
+</resources>

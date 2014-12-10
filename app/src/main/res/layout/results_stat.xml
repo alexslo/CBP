@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
     android:background="@drawable/backg"
     android:scrollbars="vertical"
-    android:tileMode="repeat">
+    android:tileMode="repeat"
+    >
 
     <TextView
         style="@style/text_32"
@@ -88,4 +91,27 @@
             android:text="135"
             android:id="@+id/stat_rezults"/>
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        >
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            ads:adSize="MEDIUM_RECTANGLE"
+            ads:adUnitId="ca-app-pub-5359593568252395/1961212749"/>
+        <TextView
+            android:text="@string/podpis"
+            android:textColor="#ffffff"
+            android:gravity="bottom"
+            android:textSize="12sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
+    </RelativeLayout>
 </LinearLayout>

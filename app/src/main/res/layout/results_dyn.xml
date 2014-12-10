@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
@@ -26,83 +28,83 @@
         android:layout_width="wrap_content"
         android:background="@drawable/separator"
         android:layout_height="1dp" />
-        <LinearLayout
-            android:orientation="horizontal"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:text="@string/dyn_test_1"
+            android:id="@+id/dyn_test_1"/>
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp"
-                android:text="@string/dyn_test_1"
-                android:id="@+id/dyn_test_1"/>
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="рез 1"
-                android:id="@+id/dyn_rez_1"/>
-        </LinearLayout>
+            android:layout_height="20dp"
+            android:text="рез 1"
+            android:id="@+id/dyn_rez_1"/>
+    </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:text="@string/dyn_test_2"
+            android:id="@+id/dyn_test_2"/>
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp"
-                android:text="@string/dyn_test_2"
-                android:id="@+id/dyn_test_2"/>
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="рез 2"
-                android:id="@+id/dyn_rez_2"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
+            android:layout_height="20dp"
+            android:text="рез 2"
+            android:id="@+id/dyn_rez_2"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:text="@string/dyn_test_3"
+            android:id="@+id/dyn_test_3"/>
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp"
-                android:text="@string/dyn_test_3"
-                android:id="@+id/dyn_test_3"/>
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="рез 3"
-                android:id="@+id/dyn_rez_3"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
+            android:layout_height="20dp"
+            android:text="рез 3"
+            android:id="@+id/dyn_rez_3"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:text="@string/dyn_test_4"
+            android:id="@+id/dyn_test_4"/>
+        <TextView
+            style="@style/text_16"
+            android:layout_marginTop="0dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="fill_parent"
-                android:layout_height="20dp"
-                android:text="@string/dyn_test_4"
-                android:id="@+id/dyn_test_4"/>
-            <TextView
-                style="@style/text_16"
-                android:layout_marginTop="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="Рез 4"
-                android:id="@+id/dyn_rez_4"/>
-            </LinearLayout>
+            android:layout_height="20dp"
+            android:text="Рез 4"
+            android:id="@+id/dyn_rez_4"/>
+    </LinearLayout>
     <View
         style="@style/margin_10dp"
         android:layout_width="wrap_content"
@@ -112,20 +114,20 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-    <TextView
-        style="@style/text_32"
-        android:layout_marginTop="0dp"
-        android:layout_width="fill_parent"
-        android:layout_height="39dp"
-        android:text="@string/stat_rezultat"
-/>
-    <TextView
-        style="@style/text_32"
-        android:layout_marginTop="0dp"
-        android:layout_width="fill_parent"
-        android:layout_height="39dp"
-        android:text="156"
-        android:id="@+id/dyn_rezults"/>
+        <TextView
+            style="@style/text_32"
+            android:layout_marginTop="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="39dp"
+            android:text="@string/stat_rezultat"
+            />
+        <TextView
+            style="@style/text_32"
+            android:layout_marginTop="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="39dp"
+            android:text="156"
+            android:id="@+id/dyn_rezults"/>
     </LinearLayout>
 
     <TextView
@@ -137,12 +139,33 @@
 
     <TextView
         style="@style/text_16"
-        android:layout_width="324dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/testTextView"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.79" />
-
+        android:layout_gravity="center_horizontal"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        >
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            ads:adSize="MEDIUM_RECTANGLE"
+            ads:adUnitId="ca-app-pub-5359593568252395/1961212749"/>
+        <TextView
+            android:text="@string/podpis"
+            android:textColor="#ffffff"
+            android:gravity="bottom"
+            android:textSize="12sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"/>
+    </RelativeLayout>
 </LinearLayout>

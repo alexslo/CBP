@@ -13,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -58,6 +61,11 @@ public class DynTestResult extends Activity {
         prefData = getApplicationContext().getSharedPreferences("CBP_DATA", MODE_PRIVATE);
         CalculateTestPoints mCalculateTestPoints = new CalculateTestPoints();
 
+        // Поиск AdView как ресурса и отправка запроса.
+        AdView adView = (AdView)this.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
         mCalculateTestPoints.execute();
 
     }
@@ -99,7 +107,7 @@ public class DynTestResult extends Activity {
          * Создание продукта
          **/
         protected Void doInBackground(Void... args) {
-
+            /*
             //Match variable:
             int Rfull[] = new int [picturesNum];
             int Gfull[] = new int [picturesNum];
@@ -146,15 +154,17 @@ public class DynTestResult extends Activity {
 
             G = (((Gr + Gg + Gb)/3)/255) * 100;
 
+            */
+
             testStr += "MPixels: " +  prefData.getString("MPixels","0.1") +"\n" +
                        "MFocus: " +  prefData.getString("MFocus", "") +"\n" +
-                       "MTime: " +  Math.abs(prefData.getLong("timeTestP", 1)) +"\n"
-                        + getExifPhotoPoints(photoPatchTempl + "0.jpg");
-
-
+                       "MTime: " +  Math.abs(prefData.getLong("timeTestP", 1)) +"\n" +
+                       "   Photo white:" + "/n" + getExifPhotoPoints(photoPatchTempl + "0.jpg") + "\n" +
+                       "   Photo black:"+  "/n" + getExifPhotoPoints(photoPatchTempl + "1.jpg");
 
             return null;
         }
+
         private int[] getPhotoPoints(String _photoPatch) {
             Bitmap fullBitMap = BitmapFactory.decodeFile(_photoPatch);
             // if smallBitMap = 10x10 (100); aSize = 10
@@ -190,6 +200,8 @@ public class DynTestResult extends Activity {
             BufPoints = Math.sqrt( BufPoints/picturesNum );
             return BufPoints;
         }
+
+
         private String getExifPhotoPoints(String patch) {
             String parBuf ="";
             ExifInterface exif = null;
@@ -214,7 +226,7 @@ public class DynTestResult extends Activity {
             //testText +="3 Test:" + '\n' + Y1 +'\n' + Y2 + '\n' + Y3 +'\n';
             //resultText.setText(testText);
 
-            resultDynText_1.setText( Double.toString(G) + " %");
+            //resultDynText_1.setText( Double.toString(G) + " %");
             //resultDynText_2.setText( Double.toString(H) + " %");
             //resultDynText_3.setText( Double.toString(Y)+ " %");
             //resultDynText_4.setText( Double.toString(YY) + " %");

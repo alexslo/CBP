@@ -51,6 +51,8 @@
     <string name="wb_notification_title">Attention!</string>
     <string name="wb_notification_text">To do this test you need to take a photo of a white surface (such as a sheet of A4) under normal lighting</string>
     <string name="wb_notification_button">I found a white surface , begin to test</string>
+    <string name="wb_notification_black_text">To do this test you need to close lens of, (for example with a finger) and photo black</string>
+    <string name="wb_notification_black_button">I closed the lens of, start the test</string>
     <!-- Общие -->
     <string name="podpis">\u00A9 2013</string>
 </resources>

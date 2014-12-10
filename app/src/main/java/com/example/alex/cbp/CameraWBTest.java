@@ -37,11 +37,12 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     private TextView photoNumber;
 
     private int pictureCounter = 0;
-    private int picturesNum = 3;
+    private static final int picturesNum = 2;
     public static final String saveFolderPatch = "/sdcard/CBP/";
     public static final String testPictureName = "WB_TEST_PHOTO";
 
     private long timeTestP;
+
 
     private SharedPreferences prefData;
     SharedPreferences.Editor prefDataEditor;
@@ -173,10 +174,28 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
     public void onClick(View v)
     {
         if (v == shotBtn) {
-            shotBtn.setClickable(false);
-            pictureCounter = 0;
+            //shotBtn.setClickable(false);
+            //pictureCounter = 0;
+            if (pictureCounter >= picturesNum) pictureCounter =0;
+            String iso,isoValue;
+            String isoBuf = prefData.getString("MaxISO","iso-speed-values:200");
+            if (isoBuf.contains("iso-speed")) iso = "iso-speed";
+            else iso = "iso";
+            isoValue = isoBuf.split(":")[1];
+
+            if (pictureCounter == 0) {
+
+                Camera.Parameters camParams = camera.getParameters();
+                camParams.set(iso, "100"); // values can be "auto", "100", "200", "400", "800", "1600"
+                camera.setParameters(camParams);
+                timeTestP = System.currentTimeMillis();
+            }
+            else {
+                Camera.Parameters camParams = camera.getParameters();
+                camParams.set(iso, isoValue); // values can be "auto", "100", "200", "400", "800", "1600"
+                camera.setParameters(camParams);
+            }
             camera.autoFocus(autoFocusCallback);
-            timeTestP = System.currentTimeMillis();
             camera.takePicture(null, null, null, jpegCallback);
         }
     }
@@ -207,21 +226,38 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
 
            // после того, как снимок сделан, показ превью отключается. необходимо включить его
            paramCamera.startPreview();
-           // делаем по 3 фото за раз
+           // делаем по несколько фото за раз
            pictureCounter++;
            photoNumber.setText(Integer.toString(picturesNum - pictureCounter));
+           /*
            if (pictureCounter < picturesNum)
            {
                camera.cancelAutoFocus();
                camera.autoFocus(autoFocusCallback);
                camera.takePicture(null, null, null, jpegCallback);
            }
+           */
            if (pictureCounter == picturesNum)
            {
                Intent intent = new Intent(CameraWBTest.this, DynTestResult.class);
                prefDataEditor.putLong("timeTestP",timeTestP);
                prefDataEditor.commit();
                startActivity(intent);
+           }
+           else {
+               AlertDialog.Builder builder = new AlertDialog.Builder(CameraWBTest.this);
+               builder.setTitle(R.string.wb_notification_title)
+                       .setMessage(R.string.wb_notification_black_text)
+                       .setIcon(R.drawable.ic_launcher)
+                       .setCancelable(true)
+                       .setNegativeButton(R.string.wb_notification_black_button,
+                               new DialogInterface.OnClickListener() {
+                                   public void onClick(DialogInterface dialog, int id) {
+                                       dialog.cancel();
+                                   }
+                               });
+               AlertDialog alert = builder.create();
+               alert.show();
            }
        }
 

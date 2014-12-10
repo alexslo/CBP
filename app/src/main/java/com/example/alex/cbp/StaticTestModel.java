@@ -17,6 +17,11 @@ public class StaticTestModel {
         {
             ParBuffer = FindParam("iso-values",BackCam);
         }
+        if (ParBuffer.equals("None"))
+        {
+            ParBuffer = FindParam("iso-mode-values",BackCam);
+        }
+
 
         for (int i = 1; i < 100; i++)
         {

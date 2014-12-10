@@ -6,6 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 /**
  * Created by alex on 05.11.2014.
  */
@@ -38,6 +41,11 @@ public class StaticTestResult extends Activity {
         FullPoints += testPointBuf;
 
         resultStaticSumText.setText(" " + FullPoints);
+
+        // Поиск AdView как ресурса и отправка запроса.
+        AdView adView = (AdView)this.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
 
 
