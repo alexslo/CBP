@@ -23,16 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb3d3c82-1f3d-445b-9d8b-97373d9999f5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/raiting_bar.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/raiting_bar_2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraWBTest.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/CameraWBTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/DynTestResult.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/DynTestResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/Main.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/TestChoiser.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/alex/cbp/TestChoiser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CBP.iws" />
@@ -159,7 +149,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="alexs2" />
+        <entry key="$PROJECT_DIR$" value="alexs" />
       </map>
     </option>
   </component>
@@ -1543,7 +1533,11 @@
       <created>1418240807449</created>
       <updated>1418240807449</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Другой рейтинг">
+      <created>1421597407428</created>
+      <updated>1421597407428</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
