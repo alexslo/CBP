@@ -233,7 +233,6 @@ public class DynTestResult extends Activity {
             //resultDynTextSum.setText(Double.toString(F));
 
             testTextView.setText(testStr);
-
             pDialog.dismiss();
         }
 

@@ -40,7 +40,7 @@ public class Main extends Activity {
         raitings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main.this, Reitings.class);
+                Intent intent = new Intent(Main.this, NewRating.class);
                 startActivity(intent);
             }
         });

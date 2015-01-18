@@ -28,33 +28,6 @@ public class CameraModel {
     public double getCameraFocusSize() {
         return Double.parseDouble(FindParam("focal-length",cameraAllParams));
     }
-    public String getCameraIsoMax() {
-        String ParBuffer, finalBuf;
-        finalBuf = "iso-speed-values";
-        ParBuffer = FindParam(finalBuf,cameraAllParams);
-        if (ParBuffer.equals("None"))
-        {
-            finalBuf = "iso-values";
-            ParBuffer = FindParam(finalBuf,cameraAllParams);
-        }
-        if (ParBuffer.equals("None"))
-        {
-            finalBuf = "iso-mode-values";
-            ParBuffer = FindParam(finalBuf,cameraAllParams);
-        }
-
-        int BufferPoints = 0;
-        for (int i = 1; i < 100; i++)
-        {
-            int ISO = 100*i;
-            if ( (ParBuffer.contains(String.valueOf(ISO)+","))|| (ParBuffer.contains(String.valueOf(ISO)+";")) )
-            {
-                BufferPoints =  ISO;
-            }
-        }
-        ParBuffer += ":" + String.valueOf(BufferPoints);
-        return ParBuffer;
-    }
 
     private String getAllCameraParams(int CurrentCamera ) {
 

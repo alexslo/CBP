@@ -99,7 +99,6 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         super.onResume();
         camera = Camera.open();
         photoNumber.setText(Integer.toString(picturesNum));
-        shotBtn.setClickable(true);
     }
 
     @Override
@@ -115,7 +114,6 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
             camera = null;
         }
         photoNumber.setText(Integer.toString(picturesNum));
-        shotBtn.setClickable(true);
     }
 
     @Override
@@ -177,28 +175,92 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
             //shotBtn.setClickable(false);
             //pictureCounter = 0;
             if (pictureCounter >= picturesNum) pictureCounter =0;
-            String iso,isoValue;
-            String isoBuf = prefData.getString("MaxISO","iso-speed-values:200");
-            if (isoBuf.contains("iso-speed")) iso = "iso-speed";
-            else iso = "iso";
-            isoValue = isoBuf.split(":")[1];
 
             if (pictureCounter == 0) {
 
-                Camera.Parameters camParams = camera.getParameters();
-                camParams.set(iso, "100"); // values can be "auto", "100", "200", "400", "800", "1600"
-                camera.setParameters(camParams);
+                setIsoMax();
                 timeTestP = System.currentTimeMillis();
             }
             else {
-                Camera.Parameters camParams = camera.getParameters();
-                camParams.set(iso, isoValue); // values can be "auto", "100", "200", "400", "800", "1600"
-                camera.setParameters(camParams);
+                setIsoMin();
             }
             camera.autoFocus(autoFocusCallback);
             camera.takePicture(null, null, null, jpegCallback);
         }
     }
+
+    void setIsoMax () {
+        String isoKey, isoCurrentValue, isoValues, isoMax;
+        Camera.Parameters camParams = camera.getParameters();
+
+        //Find isoKey
+        isoKey = "iso";
+        isoCurrentValue = camParams.get(isoKey);
+        if (isoCurrentValue == null) {
+            isoKey = "iso-speed";
+            isoCurrentValue = camParams.get(isoKey);
+        }
+        if (isoCurrentValue == null) return;
+
+        //Find isoValues
+        isoValues = camParams.get("iso-values");
+        if (isoValues  == null)
+            isoValues = camParams.get("iso-speed-values");
+        if (isoValues  == null)
+            isoValues = camParams.get("iso-mode-values");
+        if (isoValues  == null)
+            return;
+
+
+
+        //Find isoMax
+        isoMax = isoValues.split(",")[isoValues.split(",").length -1];
+        isoMax = isoMax.substring(0,isoMax.length());
+        //Set
+        camParams.set(isoKey, isoMax);
+        camera.setParameters(camParams);
+
+    }
+
+    void setIsoMin () {
+        String isoKey, isoCurrentValue, isoValues, isoMin;
+        Camera.Parameters camParams = camera.getParameters();
+
+        //Find isoKey
+        isoKey = "iso";
+        isoCurrentValue = camParams.get(isoKey);
+        if (isoCurrentValue == null) {
+            isoKey = "iso-speed";
+            isoCurrentValue = camParams.get(isoKey);
+        }
+        if (isoCurrentValue == null) return;
+
+        //Find isoValues
+        isoValues = camParams.get("iso-speed-values");
+        if (isoValues == null)
+            isoValues = camParams.get("iso-values");
+        if (isoValues == null)
+            isoValues = camParams.get("iso-mode-values");
+        if (isoValues == null)
+            return;
+
+        //Find isoMin  ParBuffer.contains(String.valueOf(ISO)+",")
+
+        isoMin = "";
+        for (int i =0; i< 4;i++) {
+            isoMin = isoValues.split(",")[i];
+            if (isoMin.contains("100") || isoMin.contains("200"))
+                break;
+        }
+        if (isoMin.isEmpty() )
+                return;
+        //Set
+        camParams.set(isoKey, isoMin);
+        camera.setParameters(camParams);
+
+
+    }
+
 
    PictureCallback jpegCallback = new PictureCallback() {
        public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)

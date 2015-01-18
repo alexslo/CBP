@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="E:\CBP\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-2299abf266fd3cf900604d2466b1f2991aa0501c.jar"
+        jar="E:\CBP\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="E:\CBP\app\build\intermediates\pre-dexed\debug\GraphView-3.1.1-a10e7c49c74ae13455532a22660a3468a1d95226.jar"
+        jar="E:\CBP\app\libs\GraphView-3.1.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="fde5ac3b4d45761447598d87b4c43cc4d143890a"/>
+    <item
+        dex="E:\CBP\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-9bc5ca2e242435575c3105f37ea36594dbfda366.jar"
+        jar="E:\Android_studio\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="E:\CBP\app\build\intermediates\pre-dexed\debug\classes-f0d4c8ced88e90dcd946b1088e3badb92c871da0.jar"
+        jar="E:\CBP\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="E:\CBP\app\build\intermediates\pre-dexed\debug\classes-f7c639b41cdea8415c172b9434207e3a28fc210f.jar"
+        jar="E:\CBP\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.1.11\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="0f700f6802ba1a1f1fa7ac26d5db0666a89d75a6"/>
+
+</pre-dex-items>
