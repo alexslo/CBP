@@ -41,8 +41,6 @@
         <activity android:name=".DynTestResult"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".Reitings" >
-        </activity>
         <activity android:name=".NewRating" >
         </activity>
         <activity android:name=".AboutUs" >
