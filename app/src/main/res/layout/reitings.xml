@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/backg"
+    android:scrollbars="vertical"
+    android:tileMode="repeat">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2"
+        android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/text_32"
+                    android:layout_marginTop="0dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="36dp"
+                    android:text="Рейтинги"
+                    android:id="@+id/menu"/>
+
+            <View
+                style="@style/margin_10dp"
+                android:layout_width="wrap_content"
+                android:background="@drawable/separator"
+                android:layout_height="1dp" />
+
+            <TextView style="@style/text_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="На этой странице мы собрали для вас статистику основных устройств. Данный раздел еще разрабатывается, поэтому возможны погрешности."
+                android:id="@+id/text_reitings"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"/>
+            <View
+                style="@style/margin_10dp"
+                android:layout_width="wrap_content"
+                android:background="@drawable/separator"
+                android:layout_height="1dp" />
+
+            <FrameLayout style="@style/frame_linear_reitings">
+
+                <LinearLayout style="@style/linear_reitings" >
+
+                    <View style="@style/rating_line_front"
+                        android:id="@+id/device_persent_1"
+                        />
+                    <View style="@style/rating_line_back"
+                        />
+                </LinearLayout>
+
+                <TextView style="@style/reit_text"
+                    android:text="Nexus"
+                    android:id="@+id/dev_1"
+                    android:layout_gravity="center_vertical|left"
+                     />
+                <TextView style="@style/reit_text"
+                    android:text="165"
+                    android:id="@+id/dev_point_1"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="#0D254F"
+                    />
+             </FrameLayout>
+
+            <FrameLayout style="@style/frame_linear_reitings">
+
+                <LinearLayout style="@style/linear_reitings" >
+
+                    <View style="@style/rating_line_front"
+                        android:id="@+id/device_persent_2"
+                        />
+                    <View style="@style/rating_line_back"
+                        />
+                </LinearLayout>
+
+                <TextView style="@style/reit_text"
+                    android:text="Nexus"
+                    android:id="@+id/dev_2"
+                    android:layout_gravity="center_vertical|left"
+                    />
+                <TextView style="@style/reit_text"
+                    android:text="165"
+                    android:id="@+id/dev_point_2"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="#0D254F"
+                    />
+            </FrameLayout>
+            <FrameLayout style="@style/frame_linear_reitings">
+
+                <LinearLayout style="@style/linear_reitings" >
+
+                    <View style="@style/rating_line_front"
+                        android:id="@+id/device_persent_3"
+                        />
+                    <View style="@style/rating_line_back"
+                        />
+                </LinearLayout>
+
+                <TextView style="@style/reit_text"
+                    android:text="Nexus"
+                    android:id="@+id/dev_3"
+                    android:layout_gravity="center_vertical|left"
+                    />
+                <TextView style="@style/reit_text"
+                    android:text="165"
+                    android:id="@+id/dev_point_3"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="#0D254F"
+                    />
+            </FrameLayout>
+            <FrameLayout style="@style/frame_linear_reitings">
+
+                <LinearLayout style="@style/linear_reitings" >
+
+                    <View style="@style/rating_line_front"
+                        android:id="@+id/device_persent_4"
+                        />
+                    <View style="@style/rating_line_back"
+                        />
+                </LinearLayout>
+
+                <TextView style="@style/reit_text"
+                    android:text="Nexus"
+                    android:id="@+id/dev_4"
+                    android:layout_gravity="center_vertical|left"
+                    />
+                <TextView style="@style/reit_text"
+                    android:text="165"
+                    android:id="@+id/dev_point_4"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="#0D254F"
+                    />
+            </FrameLayout>
+            <FrameLayout style="@style/frame_linear_reitings">
+
+                <LinearLayout style="@style/linear_reitings" >
+
+                    <View style="@style/rating_line_front"
+                        android:id="@+id/device_persent_5"
+                        />
+                    <View style="@style/rating_line_back"
+                        />
+                </LinearLayout>
+
+                <TextView style="@style/reit_text"
+                    android:text="Nexus"
+                    android:id="@+id/dev_5"
+                    android:layout_gravity="center_vertical|left"
+                    />
+                <TextView style="@style/reit_text"
+                    android:text="165"
+                    android:id="@+id/dev_point_5"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="#0D254F"
+                    />
+            </FrameLayout>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:text="@string/podpis"
+                android:textColor="@color/f"
+                android:gravity="center_horizontal"
+                android:textSize="12sp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

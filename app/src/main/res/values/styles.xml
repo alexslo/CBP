@@ -4,34 +4,77 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
-<style name="margin_10dp">
-    <item name="android:layout_marginRight">10dp</item>
-    <item name="android:layout_marginLeft">10dp</item>
-    <item name="android:layout_marginBottom">10dp</item>
-    <item name="android:layout_marginTop">10dp</item>
-</style>
+
+    <style name="margin_10dp">
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
     <style name="margin_15dp">
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginBottom">15dp</item>
         <item name="android:layout_marginTop">15dp</item>
     </style>
+
     <style name="text_16">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">#ffffff</item>
-        <item name="android:gravity">left</item>
-
+      <!--  <item name="android:gravity">left</item> -->
     </style>
+
     <style name="text_32">
         <item name="android:textSize">32sp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
-    <style name="edittext">
 
+    <style name="edittext">
         <item name="android:background">#ffffff</item>
         <item name="android:gravity">center_horizontal</item>
-
     </style>
 
+    <!-- START REITINGS -->
+    <style name="frame_linear_reitings">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="linear_reitings">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/scale_back</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:weightSum">100</item>
+    </style>
+
+    <style name="rating_line_front">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/reiting_line</item>
+    </style>
+
+    <style name="rating_line_back">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="reit_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:layout_marginRight">10dp</item>
+
+    </style>
+    <!-- END REITINGS -->
+
 </resources>
+    <!--   <item name=""></item> -->
