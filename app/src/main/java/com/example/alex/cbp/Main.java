@@ -45,7 +45,10 @@ public class Main extends Activity {
             }
         });
 
-
+        // Поиск AdView как ресурса и отправка запроса.
+        AdView adView = (AdView)this.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 
