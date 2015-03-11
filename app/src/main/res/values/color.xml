@@ -4,5 +4,5 @@
     <color name="f">#ffffffff</color>
     <color name="scale_front">#ffff9900</color>
     <color name="scale_back">#e7b3daff</color>
-    <color name="my_dev_color">#ffb00198</color>
+    <color name="dev_color">#ffb00198</color>
 </resources>

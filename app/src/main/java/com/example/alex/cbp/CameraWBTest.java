@@ -45,7 +45,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
 
 
     private SharedPreferences prefData;
-    SharedPreferences.Editor prefDataEditor;
+    private SharedPreferences.Editor prefDataEditor;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -66,7 +66,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
         //Аллерт
 
         AlertDialog.Builder builder = new AlertDialog.Builder(CameraWBTest.this);
-        builder.setTitle(R.string.wb_notification_title)
+        builder.setTitle(R.string.notification_title)
                 .setMessage(R.string.wb_notification_text)
                 .setIcon(R.drawable.ic_launcher)
                 .setCancelable(true)
@@ -308,7 +308,7 @@ public class CameraWBTest extends Activity implements SurfaceHolder.Callback, Vi
            }
            else {
                AlertDialog.Builder builder = new AlertDialog.Builder(CameraWBTest.this);
-               builder.setTitle(R.string.wb_notification_title)
+               builder.setTitle(R.string.notification_title)
                        .setMessage(R.string.wb_notification_black_text)
                        .setIcon(R.drawable.ic_launcher)
                        .setCancelable(true)

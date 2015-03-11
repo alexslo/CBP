@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+<style name="margin_10dp">
+    <item name="android:layout_marginRight">10dp</item>
+    <item name="android:layout_marginLeft">10dp</item>
+    <item name="android:layout_marginBottom">10dp</item>
+    <item name="android:layout_marginTop">10dp</item>
+</style>
+    <style name="margin_15dp">
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+    <style name="text_16">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">left</item>
+
+    </style>
+    <style name="text_32">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+    <style name="edittext">
+
+        <item name="android:background">#ffffff</item>
+        <item name="android:gravity">center_horizontal</item>
+
+    </style>
+
+</resources>

@@ -47,12 +47,18 @@
 
     <string name="loading">Загрузка!</string>
 
+    <!-- Рейтинги -->
+    <string name="run_static_tests">Запустить статические тесты</string>
+
     <!-- Error сообщение во вьюхе сьемки фоток банаса белого о том что лист должен быть белым   -->
-    <string name="wb_notification_title">Внимание!</string>
-    <string name="wb_notification_text">Для проведения теста вам необходимо сфотографировать белую поверхность (например лист А4) при нормальном освещении</string>
-    <string name="wb_notification_button">Я нашёл белую поверхность, начинаем тест</string>
+    <string name="notification_title">Внимание!</string>
+    <string name="wb_notification_text">Для проведения теста вам необходимо сфотографировать яркий объект (например лампочку)</string>
+    <string name="wb_notification_button">Я нашёл яркий обьект, начинаем тест</string>
     <string name="wb_notification_black_text">Для проведения теста вам необходимо закрыть объектив (например пальцем) и сфотографировать черный</string>
     <string name="wb_notification_black_button">Я закрыл объектив, начинаем тест</string>
     <!-- Общие -->
     <string name="podpis">\u00A9 2013</string>
+    <string name="null_test_allert">Пожалуйста, вначале пройдите тесты</string>
+    <string name="cancel">Отмена</string>
+    <string name="ratings">Рейтинги</string>
 </resources>

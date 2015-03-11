@@ -1,9 +1,13 @@
 package com.example.alex.cbp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
@@ -15,13 +19,19 @@ import com.google.android.gms.ads.AdView;
 public class StaticTestResult extends Activity {
 
     private TextView  resultStaticFrontCamText, resultStaticBackCamText, resultStaticSumText;
-
+    private Button ratingsButton;
+    private SharedPreferences prefData;
+    private SharedPreferences.Editor prefDataEditor;
     public int FullPoints = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.results_stat);
+
+        prefData = getApplicationContext().getSharedPreferences("CBP_DATA", MODE_PRIVATE);
+        prefDataEditor = prefData.edit();
+
         resultStaticFrontCamText = (TextView)findViewById(R.id.stat_rez_front);
         resultStaticBackCamText = (TextView)findViewById(R.id.stat_rez_back);
         resultStaticSumText = (TextView)findViewById(R.id.stat_rezults);
@@ -41,13 +51,23 @@ public class StaticTestResult extends Activity {
         FullPoints += testPointBuf;
 
         resultStaticSumText.setText(" " + FullPoints);
+        prefDataEditor.putInt("StaticTestP", FullPoints);
+        prefDataEditor.commit();
 
         // Поиск AdView как ресурса и отправка запроса.
         AdView adView = (AdView)this.findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
-
+        ratingsButton = (Button) findViewById(R.id.ratingsButton);
+        ratingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StaticTestResult.this, NewRating.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 

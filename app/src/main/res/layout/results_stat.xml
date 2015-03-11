@@ -45,7 +45,7 @@
             android:layout_marginTop="0dp"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
-            android:text="135"
+            android:text="0"
             android:id="@+id/stat_rez_front"/>
     </LinearLayout>
     <LinearLayout
@@ -64,7 +64,7 @@
             android:layout_marginTop="0dp"
             android:layout_width="fill_parent"
             android:layout_height="20dp"
-            android:text="135"
+            android:text="0"
             android:id="@+id/stat_rez_back"/>
     </LinearLayout>
     <View
@@ -88,8 +88,18 @@
             android:layout_marginTop="0dp"
             android:layout_width="fill_parent"
             android:layout_height="39dp"
-            android:text="135"
+            android:text="0"
             android:id="@+id/stat_rezults"/>
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="238dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:text="@string/ratings"
+            android:textColor="#ffffffff"
+            android:textSize="25sp"
+            android:id="@+id/ratingsButton"
+            android:background="@drawable/knopka_reiting"/>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="wrap_content"

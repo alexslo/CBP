@@ -126,7 +126,7 @@
             android:layout_marginTop="0dp"
             android:layout_width="fill_parent"
             android:layout_height="39dp"
-            android:text="156"
+            android:text="0"
             android:id="@+id/dyn_rezults"/>
     </LinearLayout>
 

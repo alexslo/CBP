@@ -38,7 +38,7 @@ public class DynTestResult extends Activity {
 
     //Match
     private double G;
-    private double finalPoints;
+    private int finalPoints;
 
     private TextView testTextView;
     String testStr = "";
@@ -157,11 +157,37 @@ public class DynTestResult extends Activity {
             */
 
             testStr += "MPixels: " +  prefData.getString("MPixels","0.1") +"\n" +
-                       "MFocus: " +  prefData.getString("MFocus", "") +"\n" +
+                       "MFocus: " +  prefData.getString("MFocus", "0") +"\n" +
                        "MTime: " +  Math.abs(prefData.getLong("timeTestP", 1)) +"\n" +
                        "   Photo white:" + "/n" + getExifPhotoPoints(photoPatchTempl + "0.jpg") + "\n" +
                        "   Photo black:"+  "/n" + getExifPhotoPoints(photoPatchTempl + "1.jpg");
 
+            //resultDynTextSum (Sergei algorithm implementation)
+            double MP = Double.parseDouble(prefData.getString("MPixels", "0.1"));
+            double MF = Double.parseDouble(prefData.getString("MFocus", "0"));
+            int MT = (int) Math.abs(prefData.getLong("timeTestP", 1));
+
+            //parBuf = "TAG_MAKE: " + exif.getAttribute(ExifInterface.TAG_MAKE) + '\n' +
+            String stringPhotoWhiteBuf = getExifPhotoPoints(photoPatchTempl + "0.jpg");
+
+            //TODO:AddTry
+
+            double WET = Double.parseDouble(stringPhotoWhiteBuf.split("\n")[1].split(": ")[1]);
+            double WA = Double.parseDouble(stringPhotoWhiteBuf.split("\n")[2].split(": ")[1]);
+            int WISO = Integer.parseInt(stringPhotoWhiteBuf.split("\n")[3].split(": ")[1]);
+            int ISO = 0;
+            if (WISO <= 800)
+                ISO = 200;
+            else if ((WISO > 800) && (WISO <=1600))
+                ISO = 700;
+            else if ((WISO > 1600) && (WISO <=3200))
+                ISO = 1000;
+            else if ((WISO > 3200) && (WISO <=6400))
+                ISO = 1500;
+            if (WISO > 6400)
+                ISO = 200;
+
+            finalPoints = (int) (220*MP) + (int) (Math.pow((MF +5*MF),2)) +  (int) (10000 / Math.sqrt(MT)) + (int) (10/Math.tan(WET + 0.01)) + (int) (1000/Math.pow(WA,2)) +ISO;
             return null;
         }
 
@@ -231,6 +257,8 @@ public class DynTestResult extends Activity {
             //resultDynText_3.setText( Double.toString(Y)+ " %");
             //resultDynText_4.setText( Double.toString(YY) + " %");
             //resultDynTextSum.setText(Double.toString(F));
+
+            resultDynTextSum.setText(Integer.toString(finalPoints));
 
             testTextView.setText(testStr);
             pDialog.dismiss();
